@@ -211,7 +211,8 @@ skills: 2
 You often need to add conditions to a solution while tackling problems. Let's explore how you can add conditionals into dictionary comprehension to make it more powerful.
 Let' say you want to create a new dictionary same as previous problem but now the key is a number divisible by 2 in a range of 0-10 and it's value is the square of the number.
 `@instructions`
-create a new dictionary where key is a number in a range of 0-10 and it's value is the square of the number if number is even else the number itself.
+Create a new dictionary where key is a number in a range of 0-10 and it's value is the square of the number if number is even else the number itself.
+Eg: 2:4 , 3: 3
 `@hint`
 
 `@pre_exercise_code`
@@ -226,6 +227,8 @@ numbers = range(10)
 new_dict_comp = {n:n**2 for n in numbers if n%2 == 0}
 
 print(new_dict_comp)
+
+# Create a new dictionary
 
 ```
 
@@ -286,6 +289,7 @@ nested_dict = {'first':{'a':1}, 'second':{'b':2}}
 
 `@solution`
 ```{python}
+nested_dict = {'first':{'a':1}, 'second':{'b':2}}
 float_dict = {outer_k: {inner_v for (inner_k, inner_v) in outer_v.items()} for (outer_k, outer_v) in nested_dict.items()}
 print(float_dict)
 ```
