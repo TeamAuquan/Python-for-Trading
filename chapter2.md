@@ -117,19 +117,19 @@ print(________________)
 ```{python}
 # Take a 2D array as input to your DataFrame 
 my_2darray = np.array([[1, 2, 3], [4, 5, 6]])
-print(________________)
+print(pd.DataFrame(my_2darray))
 
 # Take a dictionary as input to your DataFrame 
 my_dict = {1: ['1', '3'], 2: ['1', '2'], 3: ['2', '4']}
-print(________________)
+print(pd.DataFrame(my_dict))
 
 # Take a DataFrame as input to your DataFrame 
 my_df = pd.DataFrame(data=[4,5,6,7], index=range(0,4), columns=['A'])
-print(________________)
+print(my_df)
 
 # Take a Series as input to your DataFrame
 my_series = pd.Series({"Belgium":"Brussels", "India":"New Delhi", "United Kingdom":"London", "United States":"Washington"})
-print(________________)
+print(pd.DataFrame(my_series))
 ```
 
 *** =sct
@@ -198,6 +198,8 @@ The most important ones to remember are, without a doubt, `loc` and `iloc`. The 
 
 What about selecting rows and columns? Just use rowname with `iloc` or columnname with `loc` to select rows or columns
 
+For now, it suffices to know that you can either access the values by calling them by their label or by their position in the index or column. If you don’t see this, look again at the slight differences in the commands: one time, you see [0][0], the other time, you see [0,'A'] to retrieve your value 1.
+
 *** =instructions
 
 Print row 0 and column A
@@ -208,12 +210,15 @@ Print row 0 and column A
 ```{python}
 import pandas as pd
 import numpy as np
-df = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-                  index = [0,1,2], columns=['A','B','C'])
+df = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), columns=['A','B','C'])
 ```
 
 *** =sample_code
 ```{python}
+#   A B C
+# 0 1 2 3
+# 1 4 5 6
+# 2 7 8 9
 # Using `iloc[]`
 print(df.iloc[0][0])
 
@@ -245,6 +250,47 @@ print(df.iloc[0])
 
 # Use `loc[]` to select column `'A'`
 print(df.loc[:,'A'])
+
+```
+
+*** =sct
+```{python}
+
+```
+
+--- type:NormalExercise lang:python xp:100 skills:2 key:33c60edd54
+## Adding an Index to a DataFrame
+
+When you create a DataFrame, you have the option to add input to the ‘index’ argument to make sure that you have the index that you desire. When you don’t specify this, your DataFrame will have, by default, a numerically valued index that starts with 0 and continues until the last row of your DataFrame.
+However, even when your index is specified for you automatically, you still have the power to re-use one of your columns and make it your index. You can easily do this by calling set_index() on your DataFrame.
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{python}
+import pandas as pd
+import numpy as np
+df = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), columns=['A','B','C'])
+```
+
+*** =sample_code
+```{python}
+
+# Print out your DataFrame `df` to check it out
+print(__)
+
+# Set 'C' as the index of your DataFrame
+df.______('C')
+
+```
+
+*** =solution
+```{python}
+print(df)
+df.set_index('C')
 
 ```
 
