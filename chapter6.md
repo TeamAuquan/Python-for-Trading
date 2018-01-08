@@ -112,9 +112,6 @@ If you’re in doubt about Pandas DataFrames and how they differ from other data
 //player.vimeo.com/video/154783078
 
 
-*** =projector_key
-7cd10fafa0ed3cbca1789a5aa38a754d
-
 --- type:NormalExercise lang:python xp:100 skills:2 key:f1890374fd
 ## DataFrame Shape
 After you have created your DataFrame, you might want to know a little bit more about it. You can use the `shape` property or the `len()` function in combination with the `.index` property.
@@ -519,6 +516,66 @@ df.drop(48, axis=1, inplace=True)
 
 # Drop the third row (index at position 1)
 df.drop(df.index[1])
+
+print(df)
+
+```
+
+*** =sct
+```{python}
+
+```
+
+--- type:NormalExercise lang:python xp:100 skills:2 key:b645cefed1
+## Rename the Index or Columns of a Pandas DataFrame
+
+To give the columns or your index values of your dataframe a different value, it’s best to use the `.rename()` method.
+
+*** =instructions
+
+1. Change the column names to c1, c2, c3 inplace. The dict variable to pass to `.rename()` has already been created for you
+2. Change the second index label 1 to 'a'
+
+Note that the DataFrame hasn’t been reassigned when renaming the index. As a result,  if you print the DataFrame df, you'll see the column names are changed but index names are not.
+
+*** =hint
+
+*** =pre_exercise_code
+```{python}
+import pandas as pd
+import numpy as np
+
+```
+
+*** =sample_code
+```{python}
+df = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), columns=['A','B','C'])
+
+# Define the new names of your columns
+newcols = {'A': 'c1', 'B': 'c2', 'C': 'c3'}
+
+# Use `rename()` to rename your columns inplace
+
+
+# Use `rename()` to your index
+
+
+print(df)
+```
+
+*** =solution
+```{python}
+
+df = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), columns=['A','B','C'])
+
+# Define the new names of your columns
+newcols = {'A': 'c1', 'B': 'c2', 'C': 'c3'}
+
+# Use `rename()` to rename your columns inplace
+df.rename(columns=newcols, inplace=True)
+
+# Use `rename()` to your index
+df.rename(index={1: 'a'})
 
 print(df)
 
