@@ -192,7 +192,7 @@ print(len(df.index))
 
 *** =sct
 ```{python}
-
+success_msg("Great job!")
 ```
 
 
@@ -308,4 +308,70 @@ df.set_index('C')
 *** =sct
 ```{python}
 
+```
+
+--- type:NormalExercise lang:python xp:100 skills:2 key:6a6ce95589
+## Adding Rows to a DataFrame
+
+It's important to understand the concept of `loc` and how it differs from other indexing attributes such as `.iloc` and `.ix`:
+- `loc` works on labels of your index. This means that if you give in `loc[2]`, you look for the values of your DataFrame that have an index labeled 2.
+- `iloc` works on the positions in your index. This means that if you give in `iloc[2]`, you look for the values of your DataFrame that are at index ’2`.
+- ix is a more complex case: when the index is integer-based, you pass a label to `ix`. `ix[2]` then means that you’re looking in your DataFrame for values that have an index labeled 2. This is just like `loc`! However, if your index is not solely integer-based, `ix` will work with positions, just like `iloc`
+
+Look at the results of the sample code on the right to see the difference.
+
+Now give adding rows to your DataFrame a go!
+As a consequence of what has just been explained, you understand that the general recommendation is that you use `.loc` to insert rows in your DataFrame.
+If you would use `df.ix[]`, you might try to reference a numerically valued index with the index value and accidentally overwrite an existing row of your DataFrame.
+
+
+*** =instructions
+ A new dataframe, df2 has been created.
+1.  Change the index at position `2` to [60, 50, 40]
+2. Make an index labeled `2` and add the new values [11, 12, 13]
+
+*** =hint
+
+*** =pre_exercise_code
+```{python}
+import pandas as pd
+import numpy as np
+```
+
+*** =sample_code
+```{python}
+
+df = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), index= [2, 'A', 4], columns=[48, 49, 50])
+
+# Pass `2` to `loc`
+print(df.loc[2])
+
+# Pass `2` to `iloc`
+print(df.iloc[2])
+
+# Pass `2` to `ix`
+print(df.ix[2])
+
+df2 = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), index= [2.5, 12.6, 4.8], columns=[48, 49, 50])
+
+# Change the index at position `2` to [60, 50, 40]
+
+# Make an index labeled `2` and add the new values [11, 12, 13]
+
+```
+
+*** =solution
+```{python}
+# Change the index at position `2` to [60, 50, 40]
+df2.ix[2] = [60, 50, 40]
+print(df2)
+
+# Make an index labeled `2` and add the new values [11, 12, 13]
+df2.loc[2] = [11, 12, 13]
+print(df2)
+```
+
+*** =sct
+```{python}
+success_msg("Great job!")
 ```

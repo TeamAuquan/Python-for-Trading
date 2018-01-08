@@ -50,6 +50,8 @@ print(a['cake'])
 `@sct`
 ```{python}
 
+success_msg("Great! Moving on")
+
 ```
 
 
@@ -104,7 +106,7 @@ print(a)
 
 `@sct`
 ```{python}
-
+success_msg("Good Work")
 ```
 ---
 ## Python Dictionary Comprehension
