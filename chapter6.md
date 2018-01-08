@@ -71,9 +71,6 @@ If you’re in doubt about Pandas DataFrames and how they differ from other data
 *** =video_link
 //player.vimeo.com/video/154783078
 
-*** =projector_key
-75b67b40d254ea96b6590ee4b459a82d
-
 --- type:NormalExercise lang:python xp:100 skills:2 key:7aa97bf603
 ## How To Create a Pandas DataFrame
 Obviously, making your DataFrames is your first step in almost anything that you want to do. Maybe you want to start from scratch to make a data frame, but you can also convert other data structures.
@@ -319,7 +316,7 @@ df.set_index('C')
 It's important to understand the concept of `loc` and how it differs from other indexing attributes such as `.iloc` and `.ix`:
 - `loc` works on labels of your index. This means that if you give in `loc[2]`, you look for the values of your DataFrame that have an index labeled 2.
 - `iloc` works on the positions in your index. This means that if you give in `iloc[2]`, you look for the values of your DataFrame that are at index ’2`.
-- ix is a more complex case: when the index is integer-based, you pass a label to `ix`. `ix[2]` then means that you’re looking in your DataFrame for values that have an index labeled 2. This is just like `loc`! However, if your index is not solely integer-based, `ix` will work with positions, just like `iloc`
+- `ix` is a more complex case: when the index is integer-based, you pass a label to `ix`. `ix[2]` then means that you’re looking in your DataFrame for values that have an index labeled 2. This is just like `loc`! However, if your index is not solely integer-based, `ix` will work with positions, just like `iloc`
 
 Look at the results of the sample code on the right to see the difference.
 
@@ -372,6 +369,56 @@ print(df2)
 # Make an index labeled `2` and add the new values [11, 12, 13]
 df2.loc[2] = [11, 12, 13]
 print(df2)
+```
+
+*** =sct
+```{python}
+success_msg("Great job!")
+```
+
+--- type:NormalExercise lang:python xp:100 skills:2 key:36d041f848
+## Adding a Column to Your DataFrame
+
+In some cases, you want to make your index part of your DataFrame. You can easily do this by taking a column from your DataFrame or by referring to a column that you haven’t made yet and assigning it to the `.index` property. In sample code, we add a new column D which is same as the index.
+
+However, if you want to append columns to your DataFrame, you could also follow the same approach as adding an index to your DataFrame: you use `loc` or `iloc`.
+
+*** =instructions
+Remember that you could consider a Series object much like a column of a DataFrame. Add a Series to an existing DataFrame with the help of `loc`
+
+*** =hint
+
+*** =pre_exercise_code
+```{python}
+import pandas as pd
+import numpy as np
+```
+
+*** =sample_code
+```{python}
+df = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), columns=['A', 'B', 'C'])
+
+# Use `.index`
+df['D'] = df.index
+
+print(df)
+
+#create a new series S
+
+S = pd.Series(['5', '6', '7'], index=df.index)
+
+# Append S as a column to `df`
+
+
+# Print out `df` again to see the changes
+
+```
+
+*** =solution
+```{python}
+df.loc[:, 4] = S
+
+print(df)
 ```
 
 *** =sct
