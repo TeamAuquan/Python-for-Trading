@@ -5,7 +5,7 @@ description :  Pandas is one of the most widely used Python libraries in data sc
 
 
 ---
-## Initialize Dictionary
+## Creating a Dataframe
 
 ```yaml
 type: NormalExercise
@@ -15,8 +15,10 @@ xp: 100
 skills: 2
 ```
 
-Data frames in Python are very similar are defined as a two-dimensional labeled data structures with columns of potentially different types.
+Data frames in Python are a two-dimensional labeled data structures with columns of potentially different types.
+
 In general, you could say that the Pandas data frame consists of three main components: the data, the index, and the columns.
+
 Firstly, the DataFrame can contain data that is:
 
 - a Pandas DataFrame
@@ -25,66 +27,12 @@ Firstly, the DataFrame can contain data that is:
 - a two-dimensional ndarray
 - dictionaries of one-dimensional ndarrays, lists, dictionaries or Series.
 
-Note that np.ndarray is the actual data type, while np.array() is a function to make arrays from other data structures.
-Structured arrays allow users to manipulate the data by named fields: in the example below, a structured array of three tuples is created. The first element of each tuple will be called ‘foo’ and will be of type int, while the second element will be named ‘bar’ and will be a float.
-
-*** =instructions
-Print the value of 'foo' from structured array
-*** =hint
-
-*** =pre_exercise_code
-```{python}
-import pandas as pd
-import numpy as np
-
-```
-
-*** =sample_code
-```{python}
-# A structured array
-my_array = np.ones(3, dtype=([('foo', int), ('bar', float)]))
-# Print the structured array
-
-
-```
-
-*** =solution
-```{python}
-print(my_array['foo'])
-```
-
-*** =sct
-```{python}
-
-```
-
-
-
---- type:VideoExercise lang:python xp:50 skills:2 key:006c9bc8ed
-## Index and Columns in DataFrames
-
-Besides the data that your DataFrame needs to contain, you can also specify the index and column names. The index labels the rows, while the column names label different columns. We will see later that these two components of the DataFrame are handy when you’re manipulating your data.
-
-If you’re in doubt about Pandas DataFrames and how they differ from other data structures such as the NumPy array or a Series, you can watch the small presentation below:
-
-
-*** =video_link
-//player.vimeo.com/video/154783078
-
-*** =projector_key
-291d3e23668393e2f5757b5d769ceec1
-
---- type:NormalExercise lang:python xp:100 skills:2 key:7aa97bf603
-## How To Create a Pandas DataFrame
-Obviously, making your DataFrames is your first step in almost anything that you want to do. Maybe you want to start from scratch to make a data frame, but you can also convert other data structures.
-Note that the data inputted to the data frame can vary!
-This section will only cover making a Pandas DataFrame from other data structures, such as NumPy arrays.
-To read more on making empty dataframes that you can fill up with data later, part 8.
-Among the many things that can serve as input to make a ‘DataFrame’, a NumPy ndarray is one of them. To make a data frame from a NumPy array, you can just pass it to the DataFrame() function in the data argument.
+Note that np.ndarray is the actual data type, while `np.array()` is a function to make arrays from other data structures.
+To make a data frame from a NumPy array, you can just pass it to the `DataFrame()` function in the data argument.
 
 Note how the code chunks select elements from the NumPy array to construct the DataFrame: you first select the values that are contained in the lists that start with Row1 and Row2, then you select the index or row numbers Row1 and Row2 and then the column names Col1 and Col2.
 
-This approach to making data frames will be the same for all the structures that DataFrame() can take on as input.
+This approach to making data frames will be the same for all the structures that `DataFrame()` can take on as input.
 
 *** =instructions
 
@@ -152,9 +100,20 @@ print(pd.DataFrame(my_series))
 ```
 
 
+--- type:VideoExercise lang:python xp:50 skills:2 key:006c9bc8ed
+## Index and Columns in DataFrames
+
+Besides the data that your DataFrame needs to contain, you can also specify the index and column names. The index labels the rows, while the column names label different columns. We will see later that these two components of the DataFrame are handy when you’re manipulating your data.
+
+If you’re in doubt about Pandas DataFrames and how they differ from other data structures such as the NumPy array or a Series, you can watch the small presentation below:
+
+
+*** =video_link
+//player.vimeo.com/video/154783078
+
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:f1890374fd
-## DataFrame Shapre
+## DataFrame Shape
 After you have created your DataFrame, you might want to know a little bit more about it. You can use the `shape` property or the `len()` function in combination with the `.index` property.
 
 Note how these two options give you slightly different information on your DataFrame: the `shape` property will give you the dimensions of your DataFrame. So you will get to know the width and the height of your DataFrame. On the other hand, the `len()` function, in combination with the index property, will only give you information on the height of your DataFrame.
