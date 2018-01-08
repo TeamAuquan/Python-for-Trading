@@ -71,6 +71,9 @@ If you’re in doubt about Pandas DataFrames and how they differ from other data
 *** =video_link
 //player.vimeo.com/video/154783078
 
+*** =projector_key
+291d3e23668393e2f5757b5d769ceec1
+
 --- type:NormalExercise lang:python xp:100 skills:2 key:7aa97bf603
 ## How To Create a Pandas DataFrame
 Obviously, making your DataFrames is your first step in almost anything that you want to do. Maybe you want to start from scratch to make a data frame, but you can also convert other data structures.
