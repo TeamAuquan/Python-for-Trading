@@ -62,3 +62,52 @@ print(df)
 ```{python}
 
 ```
+
+--- type:NormalExercise lang:python xp:100 skills:2 key:d23c3ea18c
+## Removing Parts From Strings in the Cells of Your DataFrame
+
+Removing unwanted parts of strings is cumbersome work. Luckily, there is a solution in place!
+
+Look at the dataframe to the right. We want to remove the extra symbols in the column 'position'. 
+
+You can create a `lambda` function takes a string value and strips the `+` or `-` that’s located on the left using `lstrip()`, and also strips away any of `ls` on the right using `rstrip()`. Then use `map()` on the column position to apply the `lambda` function over each element or element-wise of the column.
+
+*** =instructions
+Use the hint above to convert the data in column `position` into numbers
+*** =hint
+
+*** =pre_exercise_code
+```{python}
+import pandas as pd
+import numpy as np
+
+```
+
+*** =sample_code
+```{python}
+df = pd.DataFrame(data=np.array([['500', '+50l'], ['250', '-35s'], ['-400', '-25s']]), index=['S1', 'S2', 'S3'], columns=['pnl','position'])
+
+print(df)
+
+# Delete unwanted parts from the strings in the `position` column
+
+
+print(df)
+```
+
+*** =solution
+```{python}
+df = pd.DataFrame(data=np.array([['500', '+50l'], ['250', '-35s'], ['-400', '-25s']]), index=['S1', 'S2', 'S3'], columns=['pnl','position'])
+
+# Delete unwanted parts from the strings in the `result` column
+df['result'] = df['result'].map(lambda x: x.lstrip('+-').rstrip('ls'))
+
+# Check out the result again
+print(df)
+
+```
+
+*** =sct
+```{python}
+
+```
