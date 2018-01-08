@@ -112,9 +112,6 @@ If you’re in doubt about Pandas DataFrames and how they differ from other data
 //player.vimeo.com/video/154783078
 
 
-*** =projector_key
-28b25bf2f327a538f6b3c98d63b40009
-
 --- type:NormalExercise lang:python xp:100 skills:2 key:f1890374fd
 ## DataFrame Shape
 After you have created your DataFrame, you might want to know a little bit more about it. You can use the `shape` property or the `len()` function in combination with the `.index` property.
@@ -429,6 +426,98 @@ print(df)
 
 # Use `reset_index()` to reset the values. 
 df.reset_index(level=0, inplace=True)
+
+```
+
+*** =sct
+```{python}
+
+```
+
+--- type:NormalExercise lang:python xp:100 skills:2 key:47723735a8
+## Delete Indices, Rows or Columns From a Pandas Data Frame
+
+- Deleting an Index from Your DataFrame
+
+If you want to remove the index from your DataFrame, you should reconsider.Because DataFrames and Series always have an index.
+What you can do is:
+- resetting the index of your DataFrame (go back to the previous section to see how it is done) or
+- remove the index name, if there is any, by executing `del df.index.name`,
+- remove duplicate index values by resetting the index, dropping the duplicates of the index column that has been added to your DataFrame and reinstating that duplicateless column again as the index
+
+Deleting a Column from Your DataFrame
+
+To get rid of (a selection of) columns from your DataFrame, you can use the `drop()` method. There are some extra arguments that are passsed to the `drop()` method!
+- The axis argument is either 0 when it indicates rows and 1 when it is used to drop columns.
+- You can set `inplace` to `True` to delete the column without having to reassign the DataFrame.
+
+Note that you can also delete duplicate values from column with `drop_duplicates()`
+
+Removing a Row from Your DataFrame
+
+You can remove duplicate rows from your DataFrame by executing `df.drop_duplicates()`. You can also remove rows from your DataFrame, taking into account only the duplicate values that exist in one column.
+
+If there is no uniqueness criterion to the deletion that you want to perform, you can use the `drop()` method, where you use the index property to specify the index of which rows you want to remove from your DataFrame.
+
+After this command, you might want to reset the index again.
+
+
+*** =instructions
+
+Check out the dataframe in the window
+1. Drop duplicate index values and reinstate the index back
+2. Drop the column with label 48 inplace 
+3. Drop the third row
+
+
+*** =hint
+
+Use `.reset_index()` to convert index to a column, `.drop_duplicates(subset='index', keep='last')` to drop duplicates from that column and `.set_index('index')` to set it back as index
+
+*** =pre_exercise_code
+```{python}
+import pandas as pd
+import numpy as np
+```
+
+*** =sample_code
+```{python}
+
+df = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9], [40, 50, 60], [23, 35, 37]]), 
+                  index= [2.5, 12.6, 4.8, 4.8, 2.5], 
+                  columns=[48, 49, 50])
+                  
+# Drop duplicate index values
+
+
+
+# Drop the column with label 'A' inplace                 
+
+
+# Drop the third row (index at position 1)
+
+
+print(df)
+
+```
+
+*** =solution
+```{python}
+df = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9], [40, 50, 60], [23, 35, 37]]), 
+                  index= [2.5, 12.6, 4.8, 4.8, 2.5], 
+                  columns=[48, 49, 50])
+                  
+# Drop duplicate index values
+
+df.reset_index().drop_duplicates(subset='index', keep='last').set_index('index')
+
+# Drop the column with label 48 inplace                 
+df.drop(48, axis=1, inplace=True)
+
+# Drop the third row (index at position 1)
+df.drop(df.index[1])
+
+print(df)
 
 ```
 
