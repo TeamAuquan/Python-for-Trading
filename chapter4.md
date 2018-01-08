@@ -5,25 +5,6 @@ description : NumPy is a Python package to efficiently do data science. Learn to
 attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/production/course_4527/slides/ch4_slides.pdf
 
----
-## NumPy
-
-```yaml
-type: VideoExercise
-lang: python
-xp: 50
-skills: 2
-key: ed471f4b00
-```
-
-`@video_link`
-//player.vimeo.com/video/154563364
-
-`@video_hls`
-//videos.datacamp.com/transcoded/735_intro_to_python/v3/hls-ch4_1.master.m3u8
-
-*** =projector_key
-cbf80c2cf12e5a3b971598e252e9cb9d
 
 ---
 ## Your First NumPy Array
@@ -544,25 +525,6 @@ test_function("print", 2,
 success_msg("Nice! Time to learn something new: 2D Numpy arrays!")
 ```
 
----
-## 2D NumPy Arrays
-
-```yaml
-type: VideoExercise
-lang: python
-xp: 50
-skills: 2
-key: 84e9f3c38d
-```
-
-`@video_link`
-//player.vimeo.com/video/146994270
-
-`@video_hls`
-//videos.datacamp.com/transcoded/735_intro_to_python/v3/hls-ch4_2.master.m3u8
-
-*** =projector_key
-e6a2fb8649e4ba94d8a0dc7b03a6de62
 
 ---
 ## Your First 2D NumPy Array
@@ -939,25 +901,6 @@ test_function("print", 2, incorrect_msg = "Print out the result of `np_baseball 
 success_msg("Great job! Notice how with very little code, you can change all values in your `numpy` data structure in a very specific way. This will be very useful in your future as a data scientist!")
 ```
 
----
-## NumPy: Basic Statistics
-
-```yaml
-type: VideoExercise
-lang: python
-xp: 50
-skills: 2
-key: 16403c5a74
-```
-
-`@video_link`
-//player.vimeo.com/video/146994271
-
-`@video_hls`
-//videos.datacamp.com/transcoded/735_intro_to_python/v3/hls-ch4_3.master.m3u8
-
-*** =projector_key
-3c397bce7e44f4631520d5e5eb7e9433
 
 ---
 ## Average versus median
