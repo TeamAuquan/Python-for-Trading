@@ -1,4 +1,19 @@
+---
+title_meta  : Chapter 6
+title       : Introduction to Pandas
+description :  Pandas is one of the most widely used Python libraries in data science. It is one of the most powerful and flexible open source data analysis and manipulation tool available in any language.
 
+
+---
+## Initialize Dictionary
+
+```yaml
+type: NormalExercise
+key: a7dcdc4bb3
+lang: python
+xp: 100
+skills: 2
+```
 
 Data frames in Python are very similar are defined as a two-dimensional labeled data structures with columns of potentially different types.
 In general, you could say that the Pandas data frame consists of three main components: the data, the index, and the columns.
