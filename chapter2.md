@@ -5,111 +5,10 @@ description : "Learn to store, access and manipulate data in lists: the first st
 attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/intro_to_python/ch2_slides.pdf
 
----
-## Lists, what are they?
 
-```yaml
-type: VideoExercise
-lang: python
-xp: 50
-skills: 2
-key: f366e876d8
-```
-
-`@video_link`
-//player.vimeo.com/video/154563059
-
-`@video_hls`
-//videos.datacamp.com/transcoded/735_intro_to_python/v2/hls-ch2_1.master.m3u8
-
-*** =projector_key
-84258dc00ac8e6f277086d60255e8244
 
 ---
-## Create a list
-
-```yaml
-type: NormalExercise
-lang: python
-xp: 100
-skills: 2
-key: e6c527bf41
-```
-
-As opposed to `int`, `bool` etc., a list is a **compound data type**; you can group values together:
-
-```
-a = "is"
-b = "nice"
-my_list = ["my", "list", a, b]
-```
-
-After measuring the height of your family, you decide to collect some information on the house you're living in. The areas of the different parts of your house are stored in separate variables for now, as shown in the script.
-
-`@instructions`
-- Create a list, `areas`, that contains the area of the hallway (`hall`), kitchen (`kit`), living room (`liv`), bedroom (`bed`) and bathroom (`bath`), in this order. Use the predefined variables.
-- Print `areas` with the [`print()`](https://docs.python.org/3/library/functions.html#print) function.
-
-`@hint`
-- You can use the variables that have already been created to build the list: `areas = [hall, kit, ...]`.
-- Put `print(areas)` in your script to print out the list when submitting.
-
-`@pre_exercise_code`
-```{python}
-# pec
-```
-
-`@sample_code`
-```{python}
-# area variables (in square meters)
-hall = 11.25
-kit = 18.0
-liv = 20.0
-bed = 10.75
-bath = 9.50
-
-# Create list areas
-
-
-# Print areas
-
-
-```
-
-`@solution`
-```{python}
-# Area variables (in square meters)
-hall = 11.25
-kit = 18.0
-liv = 20.0
-bed = 10.75
-bath = 9.50
-
-# Create list areas
-areas = [hall, kit, liv, bed, bath]
-
-# Print areas
-print(areas)
-```
-
-`@sct`
-```{python}
-msg = "Don't remove or edit the predefined variables!"
-test_object("hall", undefined_msg = msg, incorrect_msg = msg)
-test_object("kit", undefined_msg = msg, incorrect_msg = msg)
-test_object("liv", undefined_msg = msg, incorrect_msg = msg)
-test_object("bed", undefined_msg = msg, incorrect_msg = msg)
-test_object("bath", undefined_msg = msg, incorrect_msg = msg)
-
-test_object("areas", incorrect_msg = "Define `areas` as the list containing all the area variables, in the correct order: `hall`, `kit`, `liv`, `bed` and `bath`. Watch out for typos. The list doesn't have to contain anything else.")
-
-test_function("print", incorrect_msg = "Print out the `areas` list you created by using `print(areas)`.")
-
-success_msg("Nice! A list is way better here, isn't it?")
-```
-
----
-## Create list with different types
+## Create list
 
 ```yaml
 type: NormalExercise
@@ -118,10 +17,16 @@ xp: 100
 skills: 2
 key: 1702a8bcdc
 ```
+As opposed to `int`, `bool` etc., a list is a **compound data type**; you can group values together:
 
-A list can contain any Python type. Although it's not really common, a list can also contain a mix of Python types including strings, floats, booleans, etc.
+```
+a = "is"
+b = "nice"
+my_list = ["my", "list", a, b]
+```
+A list can contain any Python type. Although it's not really common, a list can also contain a mix of Python types including strings, floats, booleans, etc. 
+After measuring the height of your family, you decide to collect some information on the house you're living in. The areas of the different parts of your house are stored in separate variables for now, as shown in the script.
 
-The printout of the previous exercise wasn't really satisfying. It's just a list of numbers representing the areas, but you can't tell which area corresponds to which part of your house.
 
 The code on the right is the start of a solution. For some of the areas, the name of the corresponding room is already placed in front. Pay attention here! `"bathroom"` is a string, while `bath` is a variable that represents the float `9.50` you specified earlier.
 
@@ -186,52 +91,6 @@ test_function("print")
 success_msg("Nice! This list contains both strings and floats, but that's not a problem for Python!")
 ```
 
----
-## Select the valid list
-
-```yaml
-type: MultipleChoiceExercise
-lang: python
-xp: 50
-skills: 2
-key: 416b80a405
-```
-
-A list can contain any Python type. But a list itself is also a Python type. That means that a list can also contain a list! Python is getting funkier by the minute, but fear not, just remember the list syntax:
-
-```
-my_list = [el1, el2, el3]
-```
-
-Can you tell which ones of the following lines of Python code are valid ways to build a list?
-
-A. `[1, 3, 4, 2]`
-B. `[[1, 2, 3], [4, 5, 7]]`
-C. `[1 + 2, "a" * 5, 3]`
-
-
-`@instructions`
-- A, B and C
-- B
-- B and C
-- C
-
-`@hint`
-Try out all the different lines in the Python shell and see which ones generate an error. Maybe none of them go wrong?
-
-`@pre_exercise_code`
-```{python}
-# pec
-```
-
-`@sct`
-```{python}
-msg1 = "Correct! As funny as they may look, all these commands are valid ways to build a Python list."
-msg2 = "Command B is valid, but it's not the only one!"
-msg3 = "Both command B and C are valid; what about command A? Try it out in the console."
-msg4 = "Command C is valid, but it's not the only one!"
-test_mc(1,[msg1,msg2,msg3,msg4])
-```
 
 ---
 ## List of lists
@@ -329,25 +188,6 @@ test_function("type", not_called_msg = msg, incorrect_msg = msg)
 success_msg("Great! Get ready to learn about list subsetting!")
 ```
 
----
-## Subsetting lists
-
-```yaml
-type: VideoExercise
-lang: python
-xp: 50
-skills: 2
-key: 9e15e5b8a0
-```
-
-`@video_link`
-//player.vimeo.com/video/146994264
-
-`@video_hls`
-//videos.datacamp.com/transcoded/735_intro_to_python/v1/hls-ch2_2.master.m3u8
-
-*** =projector_key
-47e0948980f8c77be2071a892b32ec8b
 
 ---
 ## Subset and conquer
@@ -587,13 +427,7 @@ skills: 2
 key: dfc9a168a3
 ```
 
-In the video, Filip first discussed the syntax where you specify both where to begin and end the slice of your list:
-
-```
-my_list[begin:end]
-```
-
-However, it's also possible not to specify these indexes. If you don't specify the `begin` index, Python figures out that you want to start your slice at the beginning of your list. If you don't specify the `end` index, the slice will go all the way to the last element of your list. To experiment with this, try the following commands in the IPython Shell:
+It's also possible not to specify these indexes. If you don't specify the `begin` index, Python figures out that you want to start your slice at the beginning of your list. If you don't specify the `end` index, the slice will go all the way to the last element of your list. To experiment with this, try the following commands in the IPython Shell:
 
 ```
 x = ["a", "b", "c", "d"]
@@ -651,77 +485,6 @@ test_student_typed("\[\\s*(6|-4):\\s*\]", not_typed_msg = msg % ("upstairs","6:"
 
 success_msg("Wonderful!")
 ```
-
----
-## Subsetting lists of lists
-
-```yaml
-type: MultipleChoiceExercise
-lang: python
-xp: 50
-skills: 2
-key: dbbbd306cf
-```
-
-You saw before that a Python list can contain practically anything; even other lists! To subset lists of lists, you can use the same technique as before: square brackets. Try out the commands in the following code sample in the IPython Shell:
-
-```
-x = [["a", "b", "c"],
-     ["d", "e", "f"],
-     ["g", "h", "i"]]
-x[2][0]
-x[2][:2]
-```
-
-`x[2]` results in a list, that you can subset again by adding additional square brackets.
-
-What will `house[-1][1]` return? `house`, the list of lists that you created before, is already defined for you in the workspace. You can experiment with it in the IPython Shell.
-
-`@instructions`
-- A float: the kitchen area
-- A string: `"kitchen"`
-- A float: the bathroom area
-- A string: `"bathroom"`
-
-`@hint`
-`house[-1]` selects the last element of `house`, which is the list `["bathroom", 9.50]`. What's the result if you then subset this sublist with `[1]`? You can always try out the command in the IPython Shell!
-
-`@pre_exercise_code`
-```{python}
-house = [["hallway", 11.25],
-         ["kitchen", 18.0],
-         ["living room", 20.0],
-         ["bedroom", 10.75],
-         ["bathroom", 9.50]]
-```
-
-`@sct`
-```{python}
-msg1 = msg2 = "Wrong. `house[-1]` selects the last element of `house`, which is the list `[\"bathroom\", 9.50]`."
-msg3 = "Correctomundo! The last piece of the list puzzle is manipulation."
-msg4 = "Incorrect. `house[-1]` indeed selects the list that represents the bathroom information, but `[1]` selects the second element of the sublist, not the first. Python uses zero-based indexing!"
-test_mc(3, [msg1, msg2, msg3, msg4])
-```
-
----
-## List Manipulation
-
-```yaml
-type: VideoExercise
-lang: python
-xp: 50
-skills: 2
-key: fbdaaec22a
-```
-
-`@video_link`
-//player.vimeo.com/video/149289041
-
-`@video_hls`
-//videos.datacamp.com/transcoded/735_intro_to_python/v1/hls-ch2_3.master.m3u8
-
-*** =projector_key
-823af3a8a05cb88df3f2b0dca71cec7f
 
 ---
 ## Replace list elements
@@ -936,8 +699,6 @@ xp: 100
 skills: 2
 key: af72db9915
 ```
-
-At the end of the video, Filip explained how Python lists work behind the scenes. In this exercise you'll get some hands-on experience with this.
 
 The Python code in the script already creates a list with the name `areas` and a copy named `areas_copy`. Next, the first element in the `areas_copy` list is changed and the `areas` list is printed out. If you hit _Submit Answer_ you'll see that, although you've changed `areas_copy`, the change also takes effect in the `areas` list. That's because `areas` and `areas_copy` point to the same list.
 
