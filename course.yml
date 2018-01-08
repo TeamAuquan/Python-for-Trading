@@ -1,6 +1,6 @@
 title                : Python for Trading
-description          : This is an automatically generated demo course which will help you on your way to create an awesome DataCamp course.
-university           : DataCamp
+description          : This course will guide you through the basics of Python required for working with financial data 
+university           : Auquan
 difficulty_level     : 2
-time_needed          : 1 hour
+time_needed          : 5 hour
 programming_language : python
