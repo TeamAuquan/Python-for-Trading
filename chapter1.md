@@ -164,6 +164,8 @@ Next to numerical data types, there are two other very common data types:
 - `str`
 - `bool`, Can only be `True` or `False` (the capitalization is important!).
 
+To find out the type of a value or a variable that refers to that value, you can use the [`type()`](https://docs.python.org/3/library/functions.html#type) function. 
+
 `@instructions`
 - Create a new string, `desc`, with the value `"compound interest"`.
 - Create a new boolean, `profitable`, with the value `True`.
@@ -201,50 +203,6 @@ test_object("desc", incorrect_msg = "Assign the value `\"compound interest\"` to
 test_object("profitable", incorrect_msg = "Assign the value `True` to the variable `profitable`.")
 
 success_msg("Nice!")
-```
-
----
-## Guess the type
-
-```yaml
-type: MultipleChoiceExercise
-lang: python
-xp: 50
-skills: 2
-key: b35f67514c
-```
-
-To find out the type of a value or a variable that refers to that value, you can use the [`type()`](https://docs.python.org/3/library/functions.html#type) function. Suppose you've defined a variable `a`, but you forgot the type of this variable. To determine the type of `a`, simply execute:
-
-```
-type(a)
-```
-
-We already went ahead and created three variables: `a`, `b` and `c`. You can use the IPython shell on the right to discover their type. Which of the following options is correct?
-
-`@instructions`
-- `a` is of type `int`, `b` is of type `str`, `c` is of type `bool`
-- `a` is of type `float`, `b` is of type `bool`, `c` is of type `str`
-- `a` is of type `float`, `b` is of type `str`, `c` is of type `bool`
-- `a` is of type `int`, `b` is of type `bool`, `c` is of type `str`
-
-`@hint`
-Use `type(a)`, `type(b)` and `type(c)` inside the IPython Shell to find out about the variables' types.
-
-`@pre_exercise_code`
-```{python}
-a = 100*1.1**7
-b = "True"
-c = False
-```
-
-`@sct`
-```{python}
-msg1 = "The type of `a` is not `int`. Try out `type(a)` and see for yourself."
-msg2 = "`b` is not a `bool`, it's a `str`! The fact that `True` is wrapped in double quotes makes it a string."
-msg3 = "Correcto perfecto!"
-msg4 = "None of the variable's types is correct here. Try `type(a)` and see what type this variable is."
-test_mc(3,[msg1, msg2, msg3, msg4])
 ```
 
 ---
