@@ -112,9 +112,6 @@ If you’re in doubt about Pandas DataFrames and how they differ from other data
 //player.vimeo.com/video/154783078
 
 
-*** =projector_key
-9d44043c61aea3b523e25a02f9d29e2c
-
 --- type:NormalExercise lang:python xp:100 skills:2 key:f1890374fd
 ## DataFrame Shape
 After you have created your DataFrame, you might want to know a little bit more about it. You can use the `shape` property or the `len()` function in combination with the `.index` property.
@@ -327,6 +324,9 @@ df2 = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), index= [2.5
 
 *** =solution
 ```{python}
+
+df2 = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), index= [2.5, 12.6, 4.8], columns=[48, 49, 50])
+
 # Change the index at position `2` to [60, 50, 40]
 df2.ix[2] = [60, 50, 40]
 print(df2)
@@ -381,6 +381,7 @@ S = pd.Series(['5', '6', '7'], index=df.index)
 
 *** =solution
 ```{python}
+S = pd.Series(['5', '6', '7'], index=df.index)
 df.loc[:, 4] = S
 
 print(df)
@@ -389,4 +390,46 @@ print(df)
 *** =sct
 ```{python}
 success_msg("Great job!")
+```
+
+--- type:NormalExercise lang:python xp:100 skills:2 key:89cbbc4e51
+## Resetting the Index of Your DataFrame
+
+When your index doesn’t look entirely the way you want it to, you can opt to reset it. This can easily ben done with `.reset_index()`.
+You can pass two arguments here depending on the usecase. Use the `drop` argument to indicate that you want to get rid of the index that was there. Use `inplace` to add the original index as an extra column to your DataFrame.
+
+*** =instructions
+Reset the index of the dataframe and add the original index as an extra column to your DataFrame
+
+*** =hint
+
+*** =pre_exercise_code
+```{python}
+import pandas as pd
+import numpy as np
+```
+
+*** =sample_code
+```{python}
+df = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), index= [2.5, 12.6, 4.8], columns=[48, 49, 50])
+# Check out the weird index of your dataframe
+print(df)
+
+# Use `reset_index()` to reset the values. 
+```
+
+*** =solution
+```{python}
+df = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), index= [2.5, 12.6, 4.8], columns=[48, 49, 50])
+# Check out the weird index of your dataframe
+print(df)
+
+# Use `reset_index()` to reset the values. 
+df.reset_index(level=0, inplace=True)
+
+```
+
+*** =sct
+```{python}
+
 ```
