@@ -112,6 +112,9 @@ If you’re in doubt about Pandas DataFrames and how they differ from other data
 //player.vimeo.com/video/154783078
 
 
+*** =projector_key
+7cd10fafa0ed3cbca1789a5aa38a754d
+
 --- type:NormalExercise lang:python xp:100 skills:2 key:f1890374fd
 ## DataFrame Shape
 After you have created your DataFrame, you might want to know a little bit more about it. You can use the `shape` property or the `len()` function in combination with the `.index` property.
