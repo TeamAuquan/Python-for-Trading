@@ -1,1275 +1,762 @@
 ---
-title_meta  : Chapter 4
-title       : NumPy
-description : NumPy is a Python package to efficiently do data science. Learn to work with the NumPy array, a faster and more powerful alternative to the list, and take your first steps in data exploration.
+title_meta  : Chapter 3
+title       : Functions and Packages
+description : To leverage the code that brilliant Python developers have written, you'll learn about using functions, methods and packages. This will help you to reduce the amount of code you need to solve challenging problems!
 attachments :
-  slides_link : https://s3.amazonaws.com/assets.datacamp.com/production/course_4527/slides/ch4_slides.pdf
+  slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/intro_to_python/ch3_slides.pdf
+
 
 ---
-## NumPy
+## Functions
 
 ```yaml
 type: VideoExercise
 lang: python
 xp: 50
 skills: 2
-key: ed471f4b00
+key: 2dde2f90b8
 ```
 
 `@video_link`
-//player.vimeo.com/video/154563364
+//player.vimeo.com/video/154563189
 
 `@video_hls`
-//videos.datacamp.com/transcoded/735_intro_to_python/v3/hls-ch4_1.master.m3u8
+//videos.datacamp.com/transcoded/735_intro_to_python/v3/hls-ch3_1.master.m3u8
 
 *** =projector_key
-cbf80c2cf12e5a3b971598e252e9cb9d
+abe8835964fe3385a3f0283b7a605f5f
 
 ---
-## Your First NumPy Array
+## Familiar functions
 
 ```yaml
 type: NormalExercise
 lang: python
 xp: 100
 skills: 2
-key: 84cab9d170
+key: c422ee929b
 ```
 
-In this chapter, we're going to dive into the world of baseball. Along the way, you'll get comfortable with the basics of `numpy`, a powerful package to do data science.
+Out of the box, Python offers a bunch of built-in functions to make your life as a data scientist easier. You already know two such functions: [`print()`](https://docs.python.org/3/library/functions.html#print) and [`type()`](https://docs.python.org/3/library/functions.html#type). You've also used the functions [`str()`](https://docs.python.org/3/library/functions.html#func-str), [`int()`](https://docs.python.org/3/library/functions.html#int), [`bool()`](https://docs.python.org/3/library/functions.html#bool) and [`float()`](https://docs.python.org/3/library/functions.html#float) to switch between data types. These are built-in functions as well.
 
-A list `baseball` has already been defined in the Python script, representing the height of some baseball players in centimeters. Can you add some code here and there to create a `numpy` array from it?
+Calling a function is easy. To get the type of `3.0` and store the output as a new variable, `result`, you can use the following:
+
+```
+result = type(3.0)
+```
+
+The general recipe for calling functions and saving the result to a variable is thus:
+
+```
+output = function_name(input)
+```
 
 `@instructions`
-- Import the `numpy` package as `np`, so that you can refer to `numpy` with `np`.
-- Use [`np.array()`](http://docs.scipy.org/doc/numpy-1.10.0/glossary.html#term-array) to create a `numpy` array from `baseball`. Name this array `np_baseball`.
-- Print out the type of `np_baseball` to check that you got it right.
+- Use [`print()`](https://docs.python.org/3/library/functions.html#print) in combination with [`type()`](https://docs.python.org/3/library/functions.html#type) to print out the type of `var1`.
+- Use [`len()`](https://docs.python.org/3/library/functions.html#len) to get the length of the list `var1`. Wrap it in a [`print()`](https://docs.python.org/3/library/functions.html#print) call to directly print it out.
+- Use [`int()`](https://docs.python.org/3/library/functions.html#int) to convert `var2` to an integer. Store the output as `out2`.
 
 `@hint`
-- `import numpy as np` will do the trick. Now, you have to use `np.fun_name()` whenever you want to use a `numpy` function.
-- [`np.array()`](http://docs.scipy.org/doc/numpy-1.10.0/glossary.html#term-array) should take on input `baseball`. Assign the result of the function call to `np_baseball`.
-- To print out the type of a variable `x`, simply type `print(type(x))`.
+- Call the [`type()`](https://docs.python.org/3/library/functions.html#type) function like this: `type(var1)`.
+- Call [`print()`](https://docs.python.org/3/library/functions.html#print) like you did so many times before. Simply put the variable you want to print in parentheses.
+- `int(x)` will convert `x` to an integer.
 
 `@pre_exercise_code`
 ```{python}
-import numpy as np
+# pec
 ```
 
 `@sample_code`
 ```{python}
-# Create list baseball
-baseball = [180, 215, 210, 210, 188, 176, 209, 200]
+# Create variables var1 and var2
+var1 = [1, 2, 3, 4]
+var2 = True
 
-# Import the numpy package as np
-
-
-# Create a numpy array from baseball: np_baseball
+# Print out type of var1
 
 
-# Print out type of np_baseball
+# Print out length of var1
+
+
+# Convert var2 to an integer: out2
 
 ```
 
 `@solution`
 ```{python}
-# Create list baseball
-baseball = [180, 215, 210, 210, 188, 176, 209, 200]
+# Create variables var1 and var2
+var1 = [1, 2, 3, 4]
+var2 = True
 
-# Import the numpy package as np
-import numpy as np
+# Print out type of var1
+print(type(var1))
 
-# Create a Numpy array from baseball: np_baseball
-np_baseball = np.array(baseball)
+# Print out length of var1
+print(len(var1))
 
-# Print out type of np_baseball
-print(type(np_baseball))
+# Convert var2 to an integer: out2
+out2 = int(var2)
 ```
 
 `@sct`
 ```{python}
 msg = "You don't have to change or remove the predefined variables."
-test_object("baseball", undefined_msg = msg, incorrect_msg = msg)
+test_object("var1", undefined_msg = msg, incorrect_msg = msg)
+test_object("var2", undefined_msg = msg, incorrect_msg = msg)
 
-test_import("numpy")
-
-test_object("np_baseball", do_eval = False)
-test_function("numpy.array", not_called_msg = "Be sure to call [`np.array()`](http://docs.scipy.org/doc/numpy-1.10.0/glossary.html#term-array).",
-                             incorrect_msg = "You should call [`np.array()`](http://docs.scipy.org/doc/numpy-1.10.0/glossary.html#term-array) as follows: `np.array(baseball)`.")
-test_object("np_baseball", incorrect_msg = "Assign the correct value to `np_baseball`.")
-
-msg = "Make sure to print out the type of `np_baseball` like this: `print(type(np_baseball))`."
+msg = "Make sure to print out the type of `var1` like this: `print(type(var1))`."
 test_function("type", 1, incorrect_msg = msg)
 test_function("print", 1, incorrect_msg = msg)
 
-success_msg("Great job!")
-```
-
----
-## Baseball players' height
-
-```yaml
-type: NormalExercise
-lang: python
-xp: 100
-skills: 2
-key: e7e25a89ea
-```
-
-You are a huge baseball fan. You decide to call the MLB (Major League Baseball) and ask around for some more statistics on the height of the main players. They pass along data on more than a thousand players, which is stored as a regular Python list: `height`. The height is expressed in inches. Can you make a `numpy` array out of it and convert the units to meters?
-
-`height` is already available and the `numpy` package is loaded, so you can start straight away (Source: [stat.ucla.edu](http://wiki.stat.ucla.edu/socr/index.php/SOCR_Data_MLB_HeightsWeights)).
-
-`@instructions`
-- Create a `numpy` array from `height`. Name this new array `np_height`.
-- Print `np_height`.
-- Multiply `np_height` with `0.0254` to convert all height measurements from inches to meters. Store the new values in a new array, `np_height_m`.
-- Print out `np_height_m` and check if the output makes sense.
-
-`@hint`
-- Use [`np.array()`](http://docs.scipy.org/doc/numpy-1.10.0/glossary.html#term-array) and pass it `height`. Store the result in `np_height`.
-- To print out a variable `x`, type `print(x)` in the Python script.
-- Perform calculations as if `np_height` is a single number: `np_height * factor` is part of the answer.
-- To print out a variable `x`, type `print(x)` in the Python script.
-
-`@pre_exercise_code`
-```{python}
-import pandas as pd
-mlb = pd.read_csv("http://s3.amazonaws.com/assets.datacamp.com/course/intro_to_python/baseball.csv")
-height = mlb['Height'].tolist()
-import numpy as np
-```
-
-`@sample_code`
-```{python}
-# height is available as a regular list
-
-# Import numpy
-import numpy as np
-
-# Create a numpy array from height: np_height
-
-
-# Print out np_height
-
-
-# Convert np_height to m: np_height_m
-
-
-# Print np_height_m
-
-```
-
-`@solution`
-```{python}
-# height is available as a regular list
-
-# Import numpy
-import numpy as np
-
-# Create a numpy array from height: np_height
-np_height = np.array(height)
-
-# Print out np_height
-print(np_height)
-
-# Convert np_height to m: np_height_m
-np_height_m = np_height * 0.0254
-
-# Print np_height_m
-print(np_height_m)
-```
-
-`@sct`
-```{python}
-# sct code
-test_import("numpy", same_as = False)
-
-test_object("np_height", do_eval = False)
-test_function("numpy.array", not_called_msg = "Be sure to call [`np.array()`](http://docs.scipy.org/doc/numpy-1.10.0/glossary.html#term-array).",
-                             incorrect_msg = "You should call [`np.array()`](http://docs.scipy.org/doc/numpy-1.10.0/glossary.html#term-array) as follows: `np.array(np_height)`.")
-test_object("np_height", incorrect_msg = "Assign the correct value to `np_height`.")
-
-test_function("print", 1, incorrect_msg = "Print out `np_height` with `print(np_height)`.")
-
-test_object("np_height_m", incorrect_msg = "Your calculation of `np_height_m` is not quite correct, be sure to multiply `np_height` with `0.0254`.")
-
-test_function("print", 2, incorrect_msg = "Print out `np_height_m` with `print(np_height_m)`.")
-
-success_msg("Nice! In the blink of an eye, `numpy` performs multiplications on more than 1000 height measurements.")
-```
-
----
-## Baseball player's BMI
-
-```yaml
-type: NormalExercise
-lang: python
-xp: 100
-skills: 2
-key: 689fdbc950
-```
-
-The MLB also offers to let you analyze their weight data. Again, both are available as regular Python lists: `height` and `weight`. `height` is in inches and `weight` is in pounds.
-
-It's now possible to calculate the BMI of each baseball player. Python code to convert `height` to a `numpy` array with the correct units is already available in the workspace. Follow the instructions step by step and finish the game!
-
-`@instructions`
-- Create a `numpy` array from the `weight` list with the correct units. Multiply by `0.453592` to go from pounds to kilograms. Store the resulting `numpy` array as `np_weight_kg`.
-- Use `np_height_m` and `np_weight_kg` to calculate the BMI of each player. Use the following equation: $$ \mathrm{BMI} = \frac{\mathrm{weight (kg)}}{\mathrm{height (m)}^2}$$ Save the resulting `numpy` array as `bmi`.
-- Print out `bmi`.
-
-`@hint`
-- Use a similar approach as the code that calculates `np_height_m`. This time, though, the you have to work with `weight` and multiply with `0.453592`.
-- To calculate the `bmi`, you will need the `/` and `**` operators.
-- To print out a variable `x`, type `print(x)` in the script.
-
-`@pre_exercise_code`
-```{python}
-import pandas as pd
-mlb = pd.read_csv("http://s3.amazonaws.com/assets.datacamp.com/course/intro_to_python/baseball.csv")
-height = mlb['Height'].tolist()
-weight = mlb['Weight'].tolist()
-import numpy as np
-```
-
-`@sample_code`
-```{python}
-# height and weight are available as a regular lists
-
-# Import numpy
-import numpy as np
-
-# Create array from height with correct units: np_height_m
-np_height_m = np.array(height) * 0.0254
-
-# Create array from weight with correct units: np_weight_kg
-
-
-# Calculate the BMI: bmi
-
-
-# Print out bmi
-
-```
-
-`@solution`
-```{python}
-# height and weight are available as a regular lists
-
-# Import numpy
-import numpy as np
-
-# Create array from height with correct units: np_height_m
-np_height_m = np.array(height) * 0.0254
-
-# Create array from weight with correct units: np_weight_kg
-np_weight_kg = np.array(weight) * 0.453592
-
-# Calculate the BMI: bmi
-bmi = np_weight_kg / np_height_m ** 2
-
-# Print out bmi
-print(bmi)
-```
-
-`@sct`
-```{python}
-test_import("numpy", same_as = False)
-
-# check np_height_m
-msg = "The variable `np_height_m` was defined for you. You don't have to change or remove it!"
-test_object("np_height_m", incorrect_msg = msg, undefined_msg = msg)
-
-# test np_weight
-test_object("np_weight_kg", do_eval = False)
-test_function("numpy.array", 2, not_called_msg = "Be sure to call [`np.array()`](http://docs.scipy.org/doc/numpy-1.10.0/glossary.html#term-array).",
-                                incorrect_msg = "To assign `np_weight_kg`, use `np.array(weight)`.")
-test_object("np_weight_kg", incorrect_msg = "Are you calculating `np_weight_kg` correctly? Be sure to multiply `np.array(weight)` with `0.453592`.")
-
-# check bmi
-test_object("bmi", incorrect_msg = "Are you calculating `bmi` correctly? You can use `np_weight_kg / np_height_m ** 2` for this.")
-
-test_function("print", 1, incorrect_msg = "Don't forget to print out `bmi`!")
-success_msg("Cool! Time to step up your game!")
-```
-
----
-## Lightweight baseball players
-
-```yaml
-type: NormalExercise
-lang: python
-xp: 100
-skills: 2
-key: ef6add980e
-```
-
-To subset both regular Python lists and `numpy` arrays, you can use square brackets:
-
-```
-x = [4 , 9 , 6, 3, 1]
-x[1]
-import numpy as np
-y = np.array(x)
-y[1]
-```
-
-For `numpy` specifically, you can also use boolean `numpy` arrays:
-
-```
-high = y > 5
-y[high]
-```
-
-The code that calculates the BMI of all baseball players is already included. Follow the instructions and reveal interesting things from the data!
-
-`@instructions`
-- Create a boolean `numpy` array: the element of the array should be `True` if the corresponding baseball player's BMI is below 21. You can use the `<` operator for this. Name the array `light`.
-- Print the array `light`.
-- Print out a `numpy` array with the BMIs of all baseball players whose BMI is below 21. Use `light` inside square brackets to do a selection on the `bmi` array.
-
-`@hint`
-- `bmi > 30` will give you a boolean `numpy` array in which the elements are `True` if the corresponding player's BMI is over 30.
-- To print out a variable `x`, type `print(x)` in the Python script.
-- `bmi[light]` will return the array you need. Don't forget to wrap a [`print()`](https://docs.python.org/3/library/functions.html#print) call around it!
-
-`@pre_exercise_code`
-```{python}
-import pandas as pd
-mlb = pd.read_csv("http://s3.amazonaws.com/assets.datacamp.com/course/intro_to_python/baseball.csv")
-height = mlb['Height'].tolist()
-weight = mlb['Weight'].tolist()
-import numpy as np
-```
-
-`@sample_code`
-```{python}
-# height and weight are available as a regular lists
-
-# Import numpy
-import numpy as np
-
-# Calculate the BMI: bmi
-np_height_m = np.array(height) * 0.0254
-np_weight_kg = np.array(weight) * 0.453592
-bmi = np_weight_kg / np_height_m ** 2
-
-# Create the light array
-
-
-# Print out light
-
-
-# Print out BMIs of all baseball players whose BMI is below 21
-
-```
-
-`@solution`
-```{python}
-# height and weight are available as a regular lists
-
-# Import numpy
-import numpy as np
-
-# Calculate the BMI: bmi
-np_height_m = np.array(height) * 0.0254
-np_weight_kg = np.array(weight) * 0.453592
-bmi = np_weight_kg / np_height_m ** 2
-
-# Create the light array
-light = bmi < 21
-
-# Print out light
-print(light)
-
-# Print out BMIs of all baseball players whose BMI is below 21
-print(bmi[light])
-```
-
-`@sct`
-```{python}
-msg = "You don't have to change or remove the predefined variables."
-test_object("np_height_m", undefined_msg = msg, incorrect_msg = msg)
-test_object("np_weight_kg", undefined_msg = msg, incorrect_msg = msg)
-test_object("bmi", undefined_msg = msg, incorrect_msg = msg)
-
-test_object("light", incorrect_msg = "Use the `<` boolean operator to define `light`. `bmi` should be smaller than `21`.")
-
-test_function("print", 1, incorrect_msg = "Print out `light` with `print(light)`.")
-
-test_function("print", 2, incorrect_msg = "For the second printout, use `light` as an index for `bmi`.")
-
-success_msg("Wow! It appears that only 11 of the more than 1000 baseball players have a BMI under 21!")
+msg = "Make sure to print out the length of `var1` like this: `print(len(var1))`."
+test_function("len", 1, incorrect_msg = msg)
+test_function("print", 2, incorrect_msg = msg)
+
+test_object("out2", do_eval = False)
+
+test_function("int", not_called_msg = "Use [`int()`](https://docs.python.org/3/library/functions.html#int) to make an integer of `var2` and assign to `out2`.",
+                     incorrect_msg = "Use [`int()`](https://docs.python.org/3/library/functions.html#int) with the correct variables. You should pass `var2` to it."
+)
+test_object("out2", incorrect_msg = "Make sure to assign the correct value to `out2`.")
+success_msg("Great job! The [`len()`](https://docs.python.org/3/library/functions.html#len) function is extremely useful; it also works on strings to count the number of characters!")
 ```
 
 
 ---
-## NumPy Side Effects
+## Help!
 
 ```yaml
 type: MultipleChoiceExercise
 lang: python
 xp: 50
 skills: 2
-key: 3662ff6637
+key: 679b852978
 ```
 
-As Filip explained before, `numpy` is great for doing vector arithmetic. If you compare its functionality with regular Python lists, however, some things have changed.
+Maybe you already know the name of a Python function, but you still have to figure out how to use it. Ironically, you have to ask for information about a function with another function: [`help()`](https://docs.python.org/3/library/functions.html#help). In IPython specifically, you can also use `?` before the function name.
 
-First of all, `numpy` arrays cannot contain elements with different types. If you try to build such a list, some of the elements' types are changed to end up with a homogeneous list. This is known as _type coercion_.
-
-Second, the typical arithmetic operators, such as `+`, `-`, `*` and `/` have a different meaning for regular Python lists and `numpy` arrays.
-
-Have a look at this line of code:
+To get help on the [`max()`](https://docs.python.org/3/library/functions.html#max) function, for example, you can use one of these calls:
 
 ```
-np.array([True, 1, 2]) + np.array([3, 4, False])
+help(max)
+?max
 ```
 
-Can you tell which code chunk builds the exact same Python object? The `numpy` package is already imported as `np`, so you can start experimenting in the IPython Shell straight away!
+Use the Shell on the right to open up the documentation on [`complex()`](https://docs.python.org/3/library/functions.html#complex). Which of the following statements is true?
 
 `@instructions`
-- `np.array([True, 1, 2, 3, 4, False])`
-- `np.array([4, 3, 0]) + np.array([0, 2, 2])`
-- `np.array([1, 1, 2]) + np.array([3, 4, -1])`
-- `np.array([0, 1, 2, 3, 4, 5])`
-
+- [`complex()`](https://docs.python.org/3/library/functions.html#complex) takes exactly two arguments: `real` and `[, imag]`.
+- [`complex()`](https://docs.python.org/3/library/functions.html#complex) takes two arguments: `real` and `imag`. Both these arguments are required.
+- [`complex()`](https://docs.python.org/3/library/functions.html#complex) takes two arguments: `real` and `imag`. `real` is a required argument, `imag` is an optional argument.
+- [`complex()`](https://docs.python.org/3/library/functions.html#complex) takes two arguments: `real` and `imag`. If you don't specify `imag`, it is set to 1 by Python.
 
 `@hint`
-Copy the different code chunks and paste them in the IPython Shell. See which output matches the one generated by `np.array([True, 1, 2]) + np.array([3, 4, False])`.
+The help file shows `complex(real[, imag])`. Do you remember what Filip told you about these square brackets?
 
 `@pre_exercise_code`
 ```{python}
-import numpy as np
+# pec
 ```
 
 `@sct`
 ```{python}
-msg1 = msg3 = msg4 = "Incorrect. Try out the different code chunks and see which one matches the target code chunk."
-msg2 = "Great job! `True` is converted to 1, `False` is converted to 0."
-test_mc(2, [msg1, msg2, msg3, msg4])
+msg1 = "Incorrect. `[, imag]` shows that `imag` is an optional argument."
+msg2 = "This statement is false. `imag` is not a required argument."
+msg3 = "Perfect!"
+msg4 = "This is almost true, but not entirely. If you don't specify `image`, it is set to 0."
+test_mc(3, [msg1, msg2, msg3, msg4])
 ```
 
 ---
-## Subsetting NumPy Arrays
+## Multiple arguments
 
 ```yaml
 type: NormalExercise
 lang: python
 xp: 100
 skills: 2
-key: fcb2a9007b
+key: e30486d7c1
 ```
 
-You've seen it with your own eyes: Python lists and `numpy` arrays sometimes behave differently. Luckily, there are still certainties in this world. For example, subsetting (using the square bracket notation on lists or arrays) works exactly the same. To see this for yourself, try the following lines of code in the IPython Shell:
+In the previous exercise, the square brackets around `imag` in the documentation showed us that the `imag` argument is optional. But Python also uses a different way to tell users about arguments being optional.
+
+Have a look at the documentation of [`sorted()`](https://docs.python.org/3/library/functions.html#sorted) by typing `help(sorted)` in the IPython Shell.
+
+You'll see that [`sorted()`](https://docs.python.org/3/library/functions.html#sorted) takes three arguments: `iterable`, `key` and `reverse`.
+
+`key=None` means that if you don't specify the `key` argument, it will be `None`. `reverse=False` means that if you don't specify the `reverse` argument, it will be `False`.
+
+In this exercise, you'll only have to specify `iterable` and `reverse`, not `key`. The first input you pass to [`sorted()`](https://docs.python.org/3/library/functions.html#sorted) will be matched to the `iterable` argument, but what about the second input? To tell Python you want to specify `reverse` without changing anything about `key`, you can use `=`:
 
 ```
-x = ["a", "b", "c"]
-x[1]
-
-np_x = np.array(x)
-np_x[1]
+sorted(___, reverse = ___)
 ```
 
-The script on the right already contains code that imports `numpy` as `np`, and stores both the height and weight of the MLB players as `numpy` arrays.
+Two lists have been created for you on the right. Can you paste them together and sort them in descending order?
+
+Note: For now, we can understand an [_iterable_](https://docs.python.org/2/glossary.html#term-iterable) as being any collection of objects, e.g. a List.
 
 `@instructions`
-- Subset `np_weight`: print out the element at index 50.
-- Print out a sub-array of `np_height`: It contains the elements at index 100 up to **and including** index 110
+- Use `+` to merge the contents of `first` and `second` into a new list: `full`.
+- Call [`sorted()`](https://docs.python.org/3/library/functions.html#sorted) on `full` and specify the `reverse` argument to be `True`. Save the sorted list as `full_sorted`.
+- Finish off by printing out `full_sorted`.
 
 `@hint`
-- Make sure to wrap a [`print()`](https://docs.python.org/3/library/functions.html#print) call around your subsetting operations.
-- Use `[100:111]` to get the elements from index 100 up to and including index 110.
+- Simply sum `first` and `second` as if they are two numbers and assign the result to `full`.
+- Use [`sorted()`](https://docs.python.org/3/library/functions.html#sorted) with two inputs: `full` and `reverse = True`.
+- To print out a variable, use [`print()`](https://docs.python.org/3/library/functions.html#print).
 
 `@pre_exercise_code`
 ```{python}
-import pandas as pd
-mlb = pd.read_csv("http://s3.amazonaws.com/assets.datacamp.com/course/intro_to_python/baseball.csv")
-height = mlb['Height'].tolist()
-weight = mlb['Weight'].tolist()
-import numpy as np
+# pec
 ```
 
 `@sample_code`
 ```{python}
-# height and weight are available as a regular lists
+# Create lists first and second
+first = [11.25, 18.0, 20.0]
+second = [10.75, 9.50]
 
-# Import numpy
-import numpy as np
-
-# Store weight and height lists as numpy arrays
-np_weight = np.array(weight)
-np_height = np.array(height)
-
-# Print out the weight at index 50
+# Paste together first and second: full
 
 
-# Print out sub-array of np_height: index 100 up to and including index 110
+# Sort full in descending order: full_sorted
+
+
+# Print out full_sorted
 
 ```
 
 `@solution`
 ```{python}
-# height and weight are available as a regular lists
+# Create lists first and second
+first = [11.25, 18.0, 20.0]
+second = [10.75, 9.50]
 
-# Import numpy
-import numpy as np
+# Paste together first and second: full
+full = first + second
 
-# Store weight and height lists as numpy arrays
-np_weight = np.array(weight)
-np_height = np.array(height)
+# Sort full in descending order: full_sorted
+full_sorted = sorted(full, reverse = True)
 
-# Print out the weight at index 50
-print(np_weight[50])
-
-# Print out sub-array of np_height: index 100 up to and including index 110
-print(np_height[100:111])
+# Print out full_sorted
+print(full_sorted)
 ```
 
 `@sct`
 ```{python}
-
-test_import("numpy", same_as = False)
-
 msg = "You don't have to change or remove the predefined variables."
-test_object("np_height", undefined_msg = msg, incorrect_msg = msg)
-test_object("np_weight", undefined_msg = msg, incorrect_msg = msg)
-
-test_function("print", 1,
-              incorrect_msg = "For the first printout, subset `np_weight` to select the 50th element.")
-
-test_function("print", 2,
-              incorrect_msg = "For the second printout, subset `np_height` to select the 100th to 110th element, included. You can use the slicing operator: `:`, just make sure to put in the correct ending index.")
-
-success_msg("Nice! Time to learn something new: 2D Numpy arrays!")
+test_object("first", undefined_msg = msg, incorrect_msg = msg)
+test_object("second", undefined_msg = msg, incorrect_msg = msg)
+test_object("full")
+test_function_v2("sorted", params = ['iterable', 'reverse'])
+test_object("full_sorted", incorrect_msg = "Assign the result of the `sorted()` function to `full_sorted`.")
+success_msg("Cool! Head over to the video on Python methods.")
 ```
 
 ---
-## 2D NumPy Arrays
+## Methods
 
 ```yaml
 type: VideoExercise
 lang: python
 xp: 50
 skills: 2
-key: 84e9f3c38d
+key: e1aaeb300b
 ```
 
 `@video_link`
-//player.vimeo.com/video/146994270
+//player.vimeo.com/video/154563307
 
 `@video_hls`
-//videos.datacamp.com/transcoded/735_intro_to_python/v3/hls-ch4_2.master.m3u8
+//videos.datacamp.com/transcoded/735_intro_to_python/v1/hls-ch3_2.master.m3u8
 
 *** =projector_key
-e6a2fb8649e4ba94d8a0dc7b03a6de62
+cf2471efdf2df82d911fb0cfcf0466f6
 
 ---
-## Your First 2D NumPy Array
+## String Methods
 
 ```yaml
 type: NormalExercise
 lang: python
 xp: 100
 skills: 2
-key: 5cb045bb13
+key: 4039302ee0
 ```
 
-Before working on the actual MLB data, let's try to create a 2D `numpy` array from a small list of lists.
+Strings come with a bunch of methods. Follow the instructions closely to discover some of them. If you want to discover them in more detail, you can always type `help(str)` in the IPython Shell.
 
-In this exercise, `baseball` is a list of lists. The main list contains 4 elements. Each of these elements is a list containing the height and the weight of 4 baseball players, in this order. `baseball` is already coded for you in the script.
+A string `room` has already been created for you to experiment with.
 
 `@instructions`
-- Use [`np.array()`](http://docs.scipy.org/doc/numpy-1.10.0/glossary.html#term-array) to create a 2D `numpy` array from `baseball`. Name it `np_baseball`.
-- Print out the type of `np_baseball`.
-- Print out the `shape` attribute of `np_baseball`. Use `np_baseball.shape`.
+- Use the [`upper()`](https://docs.python.org/3/library/stdtypes.html#str.upper) method on `room` and store the result in `room_up`. Use the syntax for calling methods that you learned in the previous video.
+- Print out `room` and `room_up`. Did both change?
+- Print out the number of o's on the variable `room` by calling [`count()`](https://docs.python.org/3/library/stdtypes.html#str.count) on `room` and passing the letter `"o"` as an input to the method. We're talking about the variable `room`, not the word `"room"`!
 
 `@hint`
-- `baseball` is already coded for you in the script. Call [`np.array()`](http://docs.scipy.org/doc/numpy-1.10.0/glossary.html#term-array) on it and store the resulting 2D `numpy` array in `np_baseball`.
-- Use [`print()`](https://docs.python.org/3/library/functions.html#print) in combination with [`type()`](https://docs.python.org/3/library/functions.html#type) for the second instruction.
-- `np_baseball.shape` will give you the dimensions of the `np_baseball`. Make sure to wrap a [`print()`](https://docs.python.org/3/library/functions.html#print) call around it.
+- You can call the [`upper()`](https://docs.python.org/3/library/stdtypes.html#str.upper) method on `room` without any additional inputs.
+- To print out a variable `x`, you can write `print(x)`.
+- Make sure to wrap your `room.count(___)` call in a [`print()`](https://docs.python.org/3/library/functions.html#print) function so that you print it out.
 
 `@pre_exercise_code`
 ```{python}
-import numpy as np
+# pec
 ```
 
 `@sample_code`
 ```{python}
-# Create baseball, a list of lists
-baseball = [[180, 78.4],
-            [215, 102.7],
-            [210, 98.5],
-            [188, 75.2]]
+# string to experiment with: room
+room = "poolhouse"
 
-# Import numpy
-import numpy as np
-
-# Create a 2D numpy array from baseball: np_baseball
+# Use upper() on room: room_up
 
 
-# Print out the type of np_baseball
+# Print out room and room_up
 
 
-# Print out the shape of np_baseball
+# Print out the number of o's in room
 
 ```
 
 `@solution`
 ```{python}
-# Create baseball, a list of lists
-baseball = [[180, 78.4],
-            [215, 102.7],
-            [210, 98.5],
-            [188, 75.2]]
+# string to experiment with: room
+room = "poolhouse"
 
-# Import numpy
-import numpy as np
+# Use upper() on room: room_up
+room_up = room.upper()
 
-# Create a 2D numpy array from baseball: np_baseball
-np_baseball = np.array(baseball)
+# Print out room and room_up
+print(room)
+print(room_up)
 
-# Print out the type of np_baseball
-print(type(np_baseball))
-
-# Print out the shape of np_baseball
-print(np_baseball.shape)
+# Print out the number of o's in room
+print(room.count("o"))
 ```
 
 `@sct`
 ```{python}
 msg = "You don't have to change or remove the predefined variables."
-test_object("baseball", undefined_msg = msg, incorrect_msg = msg)
+test_object("room", undefined_msg = msg, incorrect_msg = msg)
 
-test_import("numpy", same_as = False)
+test_function("room.upper", not_called_msg = "Don't forget to call the [`upper()`](https://docs.python.org/3/library/stdtypes.html#str.upper) method of the `room` object using the `.` notation. Watch out here, don't forget the parentheses after upper: `room.upper()`.")
+test_object("room_up", incorrect_msg = "Assign the result of your `room.upper()` call to `room_up`.")
 
-test_object("np_baseball", do_eval = False)
-test_function("numpy.array", not_called_msg = "Be sure to call [`np.array()`](http://docs.scipy.org/doc/numpy-1.10.0/glossary.html#term-array).",
-                             incorrect_msg = "You should call `np.array(baseball)` to make a 2D `numpy` array out of `baseball`.")
-test_object("np_baseball", incorrect_msg = "Assign the correct value to `np_baseball`.")
+msg = "For the second instruction, print out `%s` using [`print()`](https://docs.python.org/3/library/functions.html#print)"
+test_function("print", 1, incorrect_msg = msg % "room")
+test_function("print", 2, incorrect_msg = msg % "room_up")
 
-msg = "Make sure to print out the type of `np_baseball` like this: `print(type(np_baseball))`."
-test_function("type", 1, incorrect_msg = msg)
-test_function("print", 1, incorrect_msg = msg)
+msg = "Don't forget to count the o's in `room` by calling the [`count()`](https://docs.python.org/3/library/functions.html#count) method on it with the correct argument. Make sure to place the `\"o\"` between double quotes."
+test_function("room.count",
+              not_called_msg = msg,
+              incorrect_msg = msg)
+test_function("print", 3, not_called_msg = "Don't forget to print out the number of o's in `room`.")
 
-test_function("print", 2, incorrect_msg = "You can print the shape of `np_baseball` like this: `np_baseball.shape`.")
 
-success_msg("Great! You're ready to convert the actual MLB data to a 2D `numpy` array now!")
+success_msg("Nice! Notice from the printouts that the [`upper()`](https://docs.python.org/3/library/stdtypes.html#str.upper) method does not change the object it is called on. This will be different for lists in the next exercise!")
 ```
 
 
 ---
-## Baseball data in 2D form
+## List Methods
 
 ```yaml
 type: NormalExercise
 lang: python
 xp: 100
 skills: 2
-key: 5df25d0b7b
+key: 0dbe8ed695
 ```
 
-You have another look at the MLB data and realize that it makes more sense to restructure all this information in a 2D `numpy` array. This array should have 1015 rows, corresponding to the 1015 baseball players you have information on, and 2 columns (for height and weight).
+Strings are not the only Python types that have methods associated with them. Lists, floats, integers and booleans are also types that come packaged with a bunch of useful methods. In this exercise, you'll be experimenting with:
 
-The MLB was, again, very helpful and passed you the data in a different structure, a Python list of lists. In this list of lists, each sublist represents the height and weight of a single baseball player. The name of this embedded list is `baseball`.
+- [`index()`](https://docs.python.org/3/library/stdtypes.html#str.index), to get the index of the first element of a list that matches its input and
+- [`count()`](https://docs.python.org/3/library/stdtypes.html#str.count), to get the number of times an element appears in a list.
 
-Can you store the data as a 2D array to unlock `numpy`'s extra functionality?
+You'll be working on the list with the area of different parts of a house: `areas`.
 
 `@instructions`
-- Use [`np.array()`](http://docs.scipy.org/doc/numpy-1.10.0/glossary.html#term-array) to create a 2D `numpy` array from `baseball`. Name it `np_baseball`.
-- Print out the `shape` attribute of `np_baseball`.
+- Use the [`index()`](https://docs.python.org/3/library/stdtypes.html#str.index) method to get the index of the element in `areas` that is equal to `20.0`. Print out this index.
+- Call [`count()`](https://docs.python.org/3/library/stdtypes.html#str.count) on `areas` to find out how many times `14.5` appears in the list. Again, simply print out this number.
 
 `@hint`
-- `baseball` is already available in the Python environment. Call [`np.array()`](http://docs.scipy.org/doc/numpy-1.10.0/glossary.html#term-array) on it and store the resulting 2D `numpy` array in `np_baseball`.
-- `np_baseball.shape` will give the dimensions of the `np_baseball`. Make sure to wrap a [`print()`](https://docs.python.org/3/library/functions.html#print) call around it.
+- To print out the index, wrap the `areas.index(___)` call in a [`print()`](https://docs.python.org/3/library/functions.html#print) function.
+- To print out the number of times an element `x` occurs in the list, wrap the `areas.count(___)` call in a [`print()`](https://docs.python.org/3/library/functions.html#print) function.
 
 `@pre_exercise_code`
 ```{python}
-import pandas as pd
-baseball = pd.read_csv("http://s3.amazonaws.com/assets.datacamp.com/course/intro_to_python/baseball.csv")[['Height', 'Weight']].as_matrix().tolist()
-import numpy as np
+# pec
 ```
 
 `@sample_code`
 ```{python}
-# baseball is available as a regular list of lists
+# Create list areas
+areas = [11.25, 18.0, 20.0, 10.75, 9.50]
 
-# Import numpy package
-import numpy as np
-
-# Create a 2D numpy array from baseball: np_baseball
+# Print out the index of the element 20.0
 
 
-# Print out the shape of np_baseball
+# Print out how often 14.5 appears in areas
+
 
 ```
 
 `@solution`
 ```{python}
-# baseball is available as a regular list of lists
+# Create list areas
+areas = [11.25, 18.0, 20.0, 10.75, 9.50]
 
-# Import numpy package
-import numpy as np
+# Print out the index of the element 20.0
+print(areas.index(20.0))
 
-# Create a 2D numpy array from baseball: np_baseball
-np_baseball = np.array(baseball)
-
-# Print out the shape of np_baseball
-print(np_baseball.shape)
+# Print out how often 14.5 appears in areas
+print(areas.count(14.5))
 ```
 
 `@sct`
 ```{python}
-test_import("numpy", same_as = False)
-
-test_object("np_baseball", do_eval = False)
-test_function("numpy.array", not_called_msg = "Be sure to call [`np.array()`](http://docs.scipy.org/doc/numpy-1.10.0/glossary.html#term-array).",
-                             incorrect_msg = "You should call `np.array(baseball)` to make a 2D `numpy` array out of `baseball`.")
-test_object("np_baseball", incorrect_msg = "Assign the `numpy` array you created to `np_baseball`.")
-
-test_function("print", incorrect_msg = "Print the `shape` field of the `np_baseball` object using the dot notation: `.`.")
-
-success_msg("Slick! Time to show off some killer features of multi-dimensional `numpy` arrays!")
-```
-
----
-## Subsetting 2D NumPy Arrays
-
-```yaml
-type: NormalExercise
-lang: python
-xp: 100
-skills: 2
-key: aeca4977f0
-```
-
-If your 2D `numpy` array has a regular structure, i.e. each row and column has a fixed number of values, complicated ways of subsetting become very easy. Have a look at the code below where the elements `"a"` and `"c"` are extracted from a list of lists.
-
-```
-# regular list of lists
-x = [["a", "b"], ["c", "d"]]
-[x[0][0], x[1][0]]
-
-# numpy
-import numpy as np
-np_x = np.array(x)
-np_x[:,0]
-```
-
-For regular Python lists, this is a real pain. For 2D `numpy` arrays, however, it's pretty intuitive! The indexes before the comma refer to the rows, while those after the comma refer to the columns. The `:` is for slicing; in this example, it tells Python to include all rows.
-
-The code that converts the pre-loaded `baseball` list to a 2D `numpy` array is already in the script. The first column contains the players' height in inches and the second column holds player weight, in pounds. Add some lines to make the correct selections. Remember that in Python, the first element is at index 0!
-
-`@instructions`
-- Print out the 50th row of `np_baseball`.
-- Make a new variable, `np_weight`, containing the entire second column of `np_baseball`.
-- Select the height (first column) of the 124th baseball player in `np_baseball` and print it out.
-
-`@hint`
-- You need row index 49 in the first instruction! More specifically, you'll want to use `[49,:]`.
-- To select the entire second column, you'll need `[:,1]`.
-- For the last instruction, use `[123, 0]`; don't forget to wrap it all in a [`print()`](https://docs.python.org/3/library/functions.html#print) statement.
-
-`@pre_exercise_code`
-```{python}
-import pandas as pd
-baseball = pd.read_csv("http://s3.amazonaws.com/assets.datacamp.com/course/intro_to_python/baseball.csv")[['Height', 'Weight']].as_matrix().tolist()
-import numpy as np
-```
-
-`@sample_code`
-```{python}
-# baseball is available as a regular list of lists
-
-# Import numpy package
-import numpy as np
-
-# Create np_baseball (2 cols)
-np_baseball = np.array(baseball)
-
-# Print out the 50th row of np_baseball
-
-
-# Select the entire second column of np_baseball: np_weight
-
-
-# Print out height of 124th player
-
-```
-
-`@solution`
-```{python}
-# baseball is available as a regular list of lists
-
-# Import numpy package
-import numpy as np
-
-# Create np_baseball (2 cols)
-np_baseball = np.array(baseball)
-
-# Print out the 50th row of np_baseball
-print(np_baseball[49,:])
-
-# Select the entire second column of np_baseball: np_weight
-np_weight = np_baseball[:,1]
-
-# Print out height of 124th player
-print(np_baseball[123, 0])
-```
-
-`@sct`
-```{python}
-test_import("numpy", same_as = False)
-
 msg = "You don't have to change or remove the predefined variables."
-test_object("np_baseball", undefined_msg = msg, incorrect_msg = msg)
+test_object("areas", undefined_msg = msg, incorrect_msg = msg)
 
-test_function("print", 1, incorrect_msg = "For the first printout, subset the `np_baseball` object using `[49,:]`. This will select the 50th row completely.")
+msg = "Don't forget to find the index of `20.0` in `areas` by calling the [`index()`](https://docs.python.org/3/library/functions.html#index) method on it with the correct argument."
+test_function("areas.index",
+              not_called_msg = msg,
+              incorrect_msg = msg)
+test_function("print", 1, not_called_msg = "Don't forget to print out the index of `20.0` in `areas`.", incorrect_msg = "For the first printout, you should use `print(areas.index(20.0))`.")
 
-test_object("np_weight", incorrect_msg = "Define `np_weight` by subsetting the `np_baseball` object with `[:,1]`. This will select the first column, completely.")
+msg = "Don't forget to count the number of times `14.5` appears in `areas` by calling the [`count()`](https://docs.python.org/3/library/functions.html#count) method on it with the correct argument."
+test_function("areas.count",
+              not_called_msg = msg,
+              incorrect_msg = msg)
+test_function("print", 2, not_called_msg = "Don't forget to print out the count of `14.5` in `areas`.", incorrect_msg = "For the second printout, you should use `print(areas.count(14.5))`.")
 
-test_function("print", 2, incorrect_msg = "For the second printout, subset the `np_baseball` object using `[123,0]`. This will select the first column of the 124th row.")
-success_msg("This is going well!")
+success_msg("Nice! These were examples of `list` methods that did not change the list they were called on.")
 ```
 
 ---
-## 2D Arithmetic
+## List Methods (2)
 
 ```yaml
 type: NormalExercise
 lang: python
 xp: 100
 skills: 2
-key: 1c2378b677
+key: 1fbeab82d0
 ```
 
-Remember how you calculated the Body Mass Index for all baseball players? `numpy` was able to perform all calculations element-wise (i.e. element by element). For 2D `numpy` arrays this isn't any different! You can combine matrices with single numbers, with vectors, and with other matrices.
+Most list methods will change the list they're called on. Examples are:
 
-Execute the code below in the IPython shell and see if you understand:
+- [`append()`](https://docs.python.org/3/library/stdtypes.html#typesseq-mutable), that adds an element to the list it is called on,
+- [`remove()`](https://docs.python.org/3/library/stdtypes.html#typesseq-mutable), that removes the first element of a list that matches the input, and
+- [`reverse()`](https://docs.python.org/3/library/stdtypes.html#typesseq-mutable), that reverses the order of the elements in the list it is called on.
 
-```
-import numpy as np
-np_mat = np.array([[1, 2],
-                   [3, 4],
-                   [5, 6]])
-np_mat * 2
-np_mat + np.array([10, 10])
-np_mat + np_mat
-```
-
-`np_baseball` is coded for you; it's again a 2D `numpy` array with 3 columns representing height, weight and age.
+You'll be working on the list with the area of different parts of the house: `areas`.
 
 `@instructions`
-- You managed to get hold of the changes in weight, height and age of all baseball players. It is available as a 2D `numpy` array, `updated`. Add `np_baseball` and `updated` and print out the result.
-- You want to convert the units of height and weight. As a first step, create a `numpy` array with three values: `0.0254`, `0.453592` and `1`. Name this array `conversion`.
-- Multiply `np_baseball` with `conversion` and print out the result.
+- Use [`append()`](https://docs.python.org/3/library/stdtypes.html#typesseq-mutable) twice to add the size of the poolhouse and the garage again: `24.5` and `15.45`, respectively. Make sure to add them in this order.
+- Print out `areas`
+- Use the [`reverse()`](https://docs.python.org/3/library/stdtypes.html#typesseq-mutable) method to reverse the order of the elements in `areas`.
+- Print out `areas` once more.
 
 `@hint`
-- `np_baseball + updated` will do an element-wise summation of the two `numpy` arrays.
-- Create a `numpy` array with [`np.array()`](http://docs.scipy.org/doc/numpy-1.10.0/glossary.html#term-array); the input is a regular Python list with three elements.
-- `np_baseball * conversion` will work, without extra work. Try out it! Make sure to wrap it in a [`print()`](https://docs.python.org/3/library/functions.html#print) call.
+- For the first instruction, use the `areas.append(___)` call twice.
+- To print out a variable `x`, simply write `print(x)`.
+- The [`reverse()`](https://docs.python.org/3/library/stdtypes.html#typesseq-mutable) method does not require additional inputs; just use the dot notation and empty parentheses: `.reverse()`.
+- To print out a variable `x`, simply write `print(x)`.
 
 `@pre_exercise_code`
 ```{python}
-import pandas as pd
-import numpy as np
-baseball = pd.read_csv("http://s3.amazonaws.com/assets.datacamp.com/course/intro_to_python/baseball.csv")[['Height', 'Weight', 'Age']].as_matrix().tolist()
-n = len(baseball)
-updated = np.array(pd.read_csv("http://s3.amazonaws.com/assets.datacamp.com/course/intro_to_python/update.csv", header = None))
-import numpy as np
+# pec
 ```
 
 `@sample_code`
 ```{python}
-# baseball is available as a regular list of lists
-# updated is available as 2D numpy array
+# Create list areas
+areas = [11.25, 18.0, 20.0, 10.75, 9.50]
 
-# Import numpy package
-import numpy as np
-
-# Create np_baseball (3 cols)
-np_baseball = np.array(baseball)
-
-# Print out addition of np_baseball and updated
+# Use append twice to add poolhouse and garage size
 
 
-# Create numpy array: conversion
+
+# Print out areas
 
 
-# Print out product of np_baseball and conversion
+# Reverse the orders of the elements in areas
 
+
+# Print out areas
 ```
 
 `@solution`
 ```{python}
-# baseball is available as a regular list of lists
-# updated is available as 2D numpy array
+# Create list areas
+areas = [11.25, 18.0, 20.0, 10.75, 9.50]
 
-# Import numpy package
-import numpy as np
+# Use append twice to add poolhouse and garage size
+areas.append(24.5)
+areas.append(15.45)
 
-# Create np_baseball (3 cols)
-np_baseball = np.array(baseball)
+# Print out areas
+print(areas)
 
-# Print out addition of np_baseball and updated
-print(np_baseball + updated)
+# Reverse the orders of the elements in areas
+areas.reverse()
 
-# Create numpy array: conversion
-conversion = np.array([0.0254, 0.453592, 1])
-
-# Print out product of np_baseball and conversion
-print(np_baseball * conversion)
+# Print out areas
+print(areas)
 ```
 
 `@sct`
 ```{python}
-test_import("numpy")
+msg = "Use the `append()` method on `areas` to expand with `%s` the %s time."
+test_function("areas.append", 1,
+              not_called_msg = msg % ( "24.5", "first"),
+              incorrect_msg = msg % ( "24.5", "first"))
+test_function("areas.append", 2,
+              not_called_msg = msg % ("15.45", "second"),
+              incorrect_msg = msg % ("15.45", "second"))
 
-msg = "You don't have to change or remove the predefined variables."
-test_object("np_baseball", undefined_msg = msg, incorrect_msg = msg)
+msg = "Use the `reverse()` method on `areas` to reverse it. Don't forget the parantheses!"
+test_function("areas.reverse",
+              not_called_msg = msg,
+              incorrect_msg = msg)
 
-test_function("print", 1, incorrect_msg = "Print out the result of `np_baseball + updated` using `print(np_baseball + updated)`.")
+test_function("print", 1, incorrect_msg = "Don't forget to print out `areas` two times using `print(areas)`.")
 
-msg = "Create the `conversion` object using `np.array(...)`. Fill in the correct list on the dots."
-test_function("numpy.array", not_called_msg = msg, incorrect_msg = msg)
-test_object("conversion", incorrect_msg = "Assign the object you created with [`np.array()`](http://docs.scipy.org/doc/numpy-1.10.0/glossary.html#term-array) to `conversion`.")
 
-test_function("print", 2, incorrect_msg = "Print out the result of `np_baseball * conversion` using `print(np_baseball * conversion)`.")
 
-success_msg("Great job! Notice how with very little code, you can change all values in your `numpy` data structure in a very specific way. This will be very useful in your future as a data scientist!")
+test_function("print", 2, incorrect_msg = "Don't forget to print out `areas` two times using `print(areas)`.")
+
+test_object("areas", incorrect_msg = "The final value of `areas` is not correct although you did the correct operations. Did you change the predefined variables?", undefined_msg = "Don't remove `areas`.")
+
+success_msg("Great!")
 ```
 
 ---
-## NumPy: Basic Statistics
+## Packages
 
 ```yaml
 type: VideoExercise
 lang: python
 xp: 50
 skills: 2
-key: 16403c5a74
+key: 2b89c5a9d8
 ```
 
 `@video_link`
-//player.vimeo.com/video/146994271
+//player.vimeo.com/video/146994272
 
 `@video_hls`
-//videos.datacamp.com/transcoded/735_intro_to_python/v3/hls-ch4_3.master.m3u8
+//videos.datacamp.com/transcoded/735_intro_to_python/v1/hls-ch3_3.master.m3u8
 
 *** =projector_key
-3c397bce7e44f4631520d5e5eb7e9433
+c550d2f388d2718361d55e101c6c3887
 
 ---
-## Average versus median
+## Import package
 
 ```yaml
 type: NormalExercise
 lang: python
 xp: 100
 skills: 2
-key: 509c588eb6
+key: 7432a6376f
 ```
 
-You now know how to use `numpy` functions to get a better feeling for your data. It basically comes down to importing `numpy` and then calling several simple functions on the `numpy` arrays:
+As a data scientist, some notions of geometry never hurt. Let's refresh some of the basics.
 
-```
-import numpy as np
-x = [1, 4, 8, 10, 12]
-np.mean(x)
-np.median(x)
-```
+For a fancy clustering algorithm, you want to find the circumference, $C$, and area, $A$, of a circle. When the radius of the circle is `r`, you can calculate $C$ and $A$ as:
 
-The baseball data is available as a 2D `numpy` array with 3 columns (height, weight, age) and 1015 rows. The name of this `numpy` array is `np_baseball`. After restructuring the data, however, you notice that some height values are abnormally high. Follow the instructions and discover which summary statistic is best suited if you're dealing with so-called _outliers_.
+$$C = 2 \pi r$$
+$$A = \pi r^2 $$
+
+To use the constant `pi`, you'll need the `math` package. A variable `r` is already coded in the script. Fill in the code to calculate `C` and `A` and see how the [`print()`](https://docs.python.org/3/library/functions.html#print) functions create some nice printouts.
 
 `@instructions`
-- Create `numpy` array `np_height` that is equal to first column of `np_baseball`.
-- Print out the mean of `np_height`.
-- Print out the median of `np_height`.
+- Import the `math` package. Now you can access the constant `pi` with `math.pi`.
+- Calculate the circumference of the circle and store it in `C`.
+- Calculate the area of the circle and store it in `A`.
 
 `@hint`
-- Use 2D `numpy` subsetting: `[:,0]` is a part of the solution.
-- If `numpy` is imported as `np`, you can use [`np.mean()`](http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.mean.html) to get the mean of a Numpy array. Don't forget to throw in a [`print()`](https://docs.python.org/3/library/functions.html#print) call.
-- For the last instruction, use [`np.median()`](http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.median.html).
+- You can simply use `import math`, and then refer to `pi` with `math.pi`.
+- Use the equation in the assignment to find `C`. Use `*`
+- Use the equation in the assignment to find `A`. Use `*` and `**`.
 
 `@pre_exercise_code`
 ```{python}
-import pandas as pd
-np_baseball = pd.read_csv("http://s3.amazonaws.com/assets.datacamp.com/course/intro_to_python/baseball.csv")[['Height', 'Weight', 'Age']].as_matrix()
-np_baseball[slice(0, 1015, 50), 0] = np_baseball[slice(0, 1015, 50), 0]*1000
-import numpy as np
+# pec
 ```
 
 `@sample_code`
 ```{python}
-# np_baseball is available
+# Definition of radius
+r = 0.43
 
-# Import numpy
-import numpy as np
-
-# Create np_height from np_baseball
+# Import the math package
 
 
-# Print out the mean of np_height
+# Calculate C
+C = 0
 
+# Calculate A
+A = 0
 
-# Print out the median of np_height
-
+# Build printout
+print("Circumference: " + str(C))
+print("Area: " + str(A))
 ```
 
 `@solution`
 ```{python}
-# np_baseball is available
+# Definition of radius
+r = 0.43
 
-# Import numpy
-import numpy as np
+# Import the math package
+import math
 
-# Create np_height from np_baseball
-np_height = np_baseball[:,0]
+# Calculate C
+C = 2 * r * math.pi
 
-# Print out the mean of np_height
-print(np.mean(np_height))
+# Calculate A
+A = math.pi * r ** 2
 
-# Print out the median of np_height
-print(np.median(np_height))
+# Build printout
+print("Circumference: " + str(C))
+print("Area: " + str(A))
 ```
 
 `@sct`
 ```{python}
-test_import("numpy", same_as = False)
-
-test_object("np_height", incorrect_msg = "Make sure to use the correct subsetting operation to define `np_height`.")
-
-test_function("numpy.mean", not_called_msg = "Don't forget to call [`np.mean()`](http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.mean.html).", incorrect_msg = "Pass `np_height` as an argument to the `mean` function of `np` to print out the correct value for the first printout. Don't forget to use the dot notation: `.`.")
-
-test_function("print", 1, incorrect_msg = "Print out the result of your calculations using `print(np.mean(np_height))`.")
-
-test_function("numpy.median", not_called_msg = "Don't forget to call [`np.median()`](http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.median.html).", incorrect_msg = "Pass `np_height` as an argument to the `median` function of `np` to print out the correct value for the second printout. Don't forget to use the dot notation: `.`.")
-
-test_function("print", 2, incorrect_msg = "Print out the result of your calculations using `print(np.median(np_height))`.")
-
-success_msg("An average height of 1586 inches, that doesn't sound right, does it? However, the median does not seem affected by the outliers: 74 inches makes perfect sense. It's always a good idea to check both the median and the mean, to get a first hunch for the overall distribution of the entire dataset.")
-```
-
----
-## Explore the baseball data
-
-```yaml
-type: NormalExercise
-lang: python
-xp: 100
-skills: 2
-key: 4409948807
-```
-
-Because the mean and median are so far apart, you decide to complain to the MLB. They find the error and send the corrected data over to you. It's again available as a 2D Numpy array `np_baseball`, with three columns.
-
-The Python script on the right already includes code to print out informative messages with the different summary statistics. Can you finish the job?
-
-`@instructions`
-- The code to print out the mean height is already included. Complete the code for the median height. Replace `None` with the correct code.
-- Use [`np.std()`](http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.std.html) on the first column of `np_baseball` to calculate `stddev`. Replace `None` with the correct code.
-- Do big players tend to be heavier? Use [`np.corrcoef()`](http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.corrcoef.html) to store the correlation between the first and second column of `np_baseball` in `corr`. Replace `None` with the correct code.
-
-`@hint`
-- Use [`np.median()`](http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.median.html) to calculate the median. Make sure to select to correct column first!
-- Subset the same column when calculating the standard deviation with [`np.std()`](http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.std.html).
-- Use `np_baseball[:,0]` and `np_baseball[:,1]` to select the first and second columns; these are the inputs to [`np.corrcoef()`](http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.corrcoef.html).
-
-`@pre_exercise_code`
-```{python}
-import pandas as pd
-np_baseball = pd.read_csv("http://s3.amazonaws.com/assets.datacamp.com/course/intro_to_python/baseball.csv")[['Height', 'Weight', 'Age']].as_matrix()
-import numpy as np
-```
-
-`@sample_code`
-```{python}
-# np_baseball is available
-
-# Import numpy
-import numpy as np
-
-# Print mean height (first column)
-avg = np.mean(np_baseball[:,0])
-print("Average: " + str(avg))
-
-# Print median height. Replace 'None'
-med = None
-print("Median: " + str(med))
-
-# Print out the standard deviation on height. Replace 'None'
-stddev = None
-print("Standard Deviation: " + str(stddev))
-
-# Print out correlation between first and second column. Replace 'None'
-corr = None
-print("Correlation: " + str(corr))
-```
-
-`@solution`
-```{python}
-# np_baseball is available
-
-# Import numpy
-import numpy as np
-
-# Print mean height (first column)
-avg = np.mean(np_baseball[:,0])
-print("Average: " + str(avg))
-
-# Print median height. Replace 'None'
-med = np.median(np_baseball[:,0])
-print("Median: " + str(med))
-
-# Print out the standard deviation on height. Replace 'None'
-stddev = np.std(np_baseball[:,0])
-print("Standard Deviation: " + str(stddev))
-
-# Print out correlation between first and second column. Replace 'None'
-corr = np.corrcoef(np_baseball[:,0], np_baseball[:,1])
-print("Correlation: " + str(corr))
-```
-
-`@sct`
-```{python}
-# sct code
-test_import("numpy")
-
 msg = "You don't have to change or remove the predefined variables."
-test_object("avg", undefined_msg = msg, incorrect_msg = msg)
+test_object("r", undefined_msg = msg, incorrect_msg = msg)
+test_import("math", same_as = False)
+test_object("C", incorrect_msg = "Your calculation of `C` is not quite correct. You should use `pi` of the `math` package using the dot notation (`.`).")
+test_object("A", incorrect_msg = "Your calculation of `A` is not quite correct. You should use `pi` of the `math` package using the dot notation (`.`).")
+msg = "You don't have to change or remove the predefined `print()` functions at the end."
 test_function("print", 1, not_called_msg = msg, incorrect_msg = msg)
-
-test_function("numpy.median", 1, not_called_msg = "Don't forget to call [`np.median()`](http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.median.html).", incorrect_msg = "To assign `med`, use [`np.median()`](http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.median.html). Make sure to pass it the correct column of `np_baseball`.")
-test_object("med")
 test_function("print", 2, not_called_msg = msg, incorrect_msg = msg)
-
-test_function("numpy.std", 1, not_called_msg = "Don't forget to call [`np.std()`](http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.std.html).", incorrect_msg = "To assign `stddev`, use [`np.std()`](http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.std.html). Make sure to pass it the correct column of `np_baseball`.")
-test_object("stddev")
-test_function("print", 3, not_called_msg = msg, incorrect_msg = msg)
-
-test_object("corr", incorrect_msg = "To assign `corr`, use [`np.corrcoef()`](http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.corrcoef.html). Make sure to pass it the correct columns of `np_baseball`. You can pass it two columns.")
-test_function("print", 4, not_called_msg = msg, incorrect_msg = msg)
-
-success_msg("Great! Time to use all of your new data science skills in the last exercise!")
+success_msg("Nice!")
 ```
 
 ---
-## Blend it all together
+## Selective import
 
 ```yaml
 type: NormalExercise
 lang: python
 xp: 100
 skills: 2
-key: e125cad8a5
+key: fe65eff50a
 ```
 
-In the last few exercises you've learned everything there is to know about heights and weights of baseball players. Now it's time to dive into another sport: soccer.
+General imports, like `import math`, make **all** functionality from the `math` package available to you. However, if you decide to only use a specific part of a package, you can always make your import more selective:
 
-You've contacted FIFA for some data and they handed you two lists. The lists are the following:
 ```
-positions = ['GK', 'M', 'A', 'D', ...]
-heights = [191, 184, 185, 180, ...]
+from math import pi
 ```
-Each element in the lists corresponds to a player. The first list, `positions`, contains strings representing each player's position. The possible positions are: `'GK'` (goalkeeper), `'M'` (midfield), `'A'` (attack) and `'D'` (defense). The second list, `heights`, contains integers representing the height of the player in cm. The first player in the lists is a goalkeeper and is pretty tall (191 cm).
 
-You're fairly confident that the median height of goalkeepers is higher than that of other players on the soccer field. Some of your friends don't believe you, so you are determined to show them using the data you received from FIFA and your newly acquired Python skills.
+Let's say the Moon's orbit around planet Earth is a perfect circle, with a radius `r` (in km) that is defined in the script.
 
 `@instructions`
-- Convert `heights` and `positions`, which are regular lists, to numpy arrays. Call them `np_heights` and `np_positions`.
-- Extract all the heights of the goalkeepers. You can use a little trick here: use `np_positions == 'GK'` as an index for `np_heights`. Assign the result to `gk_heights`.
-- Extract all the heights of all the other players. This time use `np_positions != 'GK'` as an index for `np_heights`. Assign the result to `other_heights`.
-- Print out the median height of the goalkeepers using [`np.median()`](http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.median.html). Replace `None` with the correct code.
-- Do the same for the other players. Print out their median height. Replace `None` with the correct code.
+- Perform a selective import from the `math` package where you only import the `radians` function.
+- Calculate the distance travelled by the Moon over 12 degrees of its orbit. Assign the result to `dist`. You can calculate this as `r * phi`, where `r` is the radius and `phi` is the angle in radians. To convert an angle in degrees to an angle in radians, use the [`radians()`](https://docs.python.org/3/library/math.html#math.radians) function, which you just imported.
+- Print out `dist`.
 
 `@hint`
-- Use [`np.array()`](http://docs.scipy.org/doc/numpy-1.10.0/glossary.html#term-array) to convert the lists to numpy arrays.
-- You should use `np_heights[np_positions == 'GK']` to extract the heights of all goalkeepers. Don't forget to assign the result to `gk_heights`.
-- You should use `np_heights[np_positions != 'GK']` to extract the heights of all other players. Don't forget to assign the result to `other_heights`.
-- Print out the median height of the goalkeepers using `np.median(gk_heights)`.
-- Print out the median height of the other players using `np.median(other_heights)`.
+- Use `from math import radians` to do the selective import.
+- You can simply use the [`radians()`](https://docs.python.org/3/library/math.html#math.radians) function now. Pass the function the number 12 to get the angle in radians.
+- To print out a variable `x`, simply type `print(x)`.
 
 `@pre_exercise_code`
 ```{python}
-import pandas as pd
-fifa =  pd.read_csv("http://s3.amazonaws.com/assets.datacamp.com/course/intro_to_python/fifa.csv", skipinitialspace=True, usecols=['position', 'height'])
-positions = list(fifa.position)
-heights = list(fifa.height)
+# pec
 ```
 
 `@sample_code`
 ```{python}
-# heights and positions are available as lists
+# Definition of radius
+r = 192500
 
-# Import numpy
-import numpy as np
-
-# Convert positions and heights to numpy arrays: np_positions, np_heights
+# Import radians function of math package
 
 
-
-# Heights of the goalkeepers: gk_heights
-
-
-# Heights of the other players: other_heights
+# Travel distance of Moon over 12 degrees. Store in dist.
 
 
-# Print out the median height of goalkeepers. Replace 'None'
-print("Median height of goalkeepers: " + str(None))
+# Print out dist
 
-# Print out the median height of other players. Replace 'None'
-print("Median height of other players: " + str(None))
 ```
 
 `@solution`
 ```{python}
-# heights and positions are available as lists
+# Definition of radius
+r = 192500
 
-# Import numpy
-import numpy as np
+# Import radians function of math package
+from math import radians
 
-# Convert positions and heights to numpy arrays: np_positions, np_heights
-np_positions = np.array(positions)
-np_heights = np.array(heights)
+# Travel distance of Moon over 12 degrees. Store in dist.
+dist = r * radians(12)
 
-# Heights of the goalkeepers: gk_heights
-gk_heights = np_heights[np_positions == 'GK']
-
-# Heights of the other players: other_heights
-other_heights = np_heights[np_positions != 'GK']
-
-# Print out the median height of goalkeepers. Replace 'None'
-print("Median height of goalkeepers: " + str(np.median(gk_heights)))
-
-# Print out the median height of other players. Replace 'None'
-print("Median height of other players: " + str(np.median(other_heights)))
+# Print out dist
+print(dist)
 ```
 
 `@sct`
 ```{python}
-test_import("numpy")
+msg = "You don't have to change or remove the predefined variables."
+test_object("r", undefined_msg = msg, incorrect_msg = msg)
 
-msg = "Convert the regular lists to numpy lists using [`np.array()`](http://docs.scipy.org/doc/numpy-1.10.0/glossary.html#term-array). This function takes one argument: the regular list itself!"
-test_object("np_positions", do_eval = False)
-test_function("numpy.array", 1, not_called_msg = msg, incorrect_msg = msg)
-test_object("np_positions", incorrect_msg = "Assign the converted numpy array of `positions` to `np_positions`.")
+test_import("math.radians", not_imported_msg = "Be sure to import [`radians()`](https://docs.python.org/3/library/math.html#math.radians) from the `math` package. You should use the `from ___ import ___` notation.", incorrect_as_msg = "Don't set any alias for [`radians()`](https://docs.python.org/3/library/math.html#math.radians). Just type `from math import radians`.")
 
-test_object("np_heights", do_eval = False)
-test_function("numpy.array", 2, not_called_msg = msg, incorrect_msg = msg)
-test_object("np_heights", incorrect_msg = "Assign the converted numpy array of `heights` to `np_heights`.")
+test_object("dist", do_eval = False)
+test_function("math.radians", 1, incorrect_msg = "Call [`radians()`](https://docs.python.org/3/library/math.html#math.radians) with argument `12`.", not_called_msg = "Your calculation of `dist` is not quite correct. You should use [`radians()`](https://docs.python.org/3/library/math.html#math.radians) from the `math` package. If you imported correctly, you don't have to use the dot (`.`) notation.")
+test_object("dist", incorrect_msg = "Assign the result of your calculations to `dist`.")
 
-test_object("gk_heights", incorrect_msg = "You can use `[np_positions == 'GK']` as an index of `np_heights` to find the heights of all goalkeepers, `gk_heights`. You can use a hint if you're stuck!")
-test_object("other_heights", incorrect_msg = "You can use `[np_positions != 'GK']` as an index of `np_heights` to find the heights of all other players, `other_heights`. You can use a hint if you're stuck!")
+test_function("print", incorrect_msg = "Make sure to print out `dist` using `print(dist)`.")
 
-msg = "Use `np.median(%s)` to find the median height of %s."
+success_msg("Nice! Head over to the next exercise.")
+```
 
-gk_msg = msg % ("gk_heights", "goalkeepers")
-test_function("numpy.median", 1, not_called_msg = gk_msg, incorrect_msg = gk_msg)
-test_function("print", 1, incorrect_msg = "Don't forget to print out the result for the goalkeepers.")
+---
+## Different ways of importing
 
-other_msg = msg % ("other_heights", "other players")
-test_function("numpy.median", 2, not_called_msg = other_msg, incorrect_msg = other_msg)
-test_function("print", 2, incorrect_msg = "Don't forget to print out the result for the other players.")
+```yaml
+type: MultipleChoiceExercise
+lang: python
+xp: 50
+skills: 2
+key: f1b2675a2a
+```
 
-success_msg("Wonderful! You were right and the disbelievers were wrong!")
+There are several ways to import packages and modules into Python. Depending on the import call, you'll have to use different Python code.
+
+Suppose you want to use the function [`inv()`](http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.linalg.inv.html), which is in the `linalg` subpackage of the `scipy` package. You want to be able to use this function as follows:
+
+```
+my_inv([[1,2], [3,4]])
+```
+
+Which `import` statement will you need in order to run the above code without an error?
+
+`@instructions`
+- `import scipy`
+- `import scipy.linalg`
+- `from scipy.linalg import my_inv`
+- `from scipy.linalg import inv as my_inv`
+
+`@hint`
+Try the different import statements in the IPython shell and see which one causes the line `my_inv([[1, 2], [3, 4]])` to run without errors.
+
+`@pre_exercise_code`
+```{python}
+# pec
+```
+
+`@sct`
+```{python}
+msg1 = msg2 = msg3 = "Incorrect, try again. Try the different import statements in the IPython shell and see which one causes the line `my_inv([[1, 2], [3, 4]])` to run without errors."
+msg4 = "Correct! The `as` word allows you to create a local name for the function you're importing: [`inv()`](https://docs.python.org/3/library/functions.html#inv) is now available as `my_inv()`."
+test_mc(4, [msg1, msg2, msg3, msg4])
 ```
