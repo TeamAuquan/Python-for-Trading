@@ -6,25 +6,6 @@ attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/intro_to_python/ch3_slides.pdf
 
 
----
-## Functions
-
-```yaml
-type: VideoExercise
-lang: python
-xp: 50
-skills: 2
-key: 2dde2f90b8
-```
-
-`@video_link`
-//player.vimeo.com/video/154563189
-
-`@video_hls`
-//videos.datacamp.com/transcoded/735_intro_to_python/v3/hls-ch3_1.master.m3u8
-
-*** =projector_key
-abe8835964fe3385a3f0283b7a605f5f
 
 ---
 ## Familiar functions
@@ -122,50 +103,6 @@ success_msg("Great job! The [`len()`](https://docs.python.org/3/library/function
 ```
 
 
----
-## Help!
-
-```yaml
-type: MultipleChoiceExercise
-lang: python
-xp: 50
-skills: 2
-key: 679b852978
-```
-
-Maybe you already know the name of a Python function, but you still have to figure out how to use it. Ironically, you have to ask for information about a function with another function: [`help()`](https://docs.python.org/3/library/functions.html#help). In IPython specifically, you can also use `?` before the function name.
-
-To get help on the [`max()`](https://docs.python.org/3/library/functions.html#max) function, for example, you can use one of these calls:
-
-```
-help(max)
-?max
-```
-
-Use the Shell on the right to open up the documentation on [`complex()`](https://docs.python.org/3/library/functions.html#complex). Which of the following statements is true?
-
-`@instructions`
-- [`complex()`](https://docs.python.org/3/library/functions.html#complex) takes exactly two arguments: `real` and `[, imag]`.
-- [`complex()`](https://docs.python.org/3/library/functions.html#complex) takes two arguments: `real` and `imag`. Both these arguments are required.
-- [`complex()`](https://docs.python.org/3/library/functions.html#complex) takes two arguments: `real` and `imag`. `real` is a required argument, `imag` is an optional argument.
-- [`complex()`](https://docs.python.org/3/library/functions.html#complex) takes two arguments: `real` and `imag`. If you don't specify `imag`, it is set to 1 by Python.
-
-`@hint`
-The help file shows `complex(real[, imag])`. Do you remember what Filip told you about these square brackets?
-
-`@pre_exercise_code`
-```{python}
-# pec
-```
-
-`@sct`
-```{python}
-msg1 = "Incorrect. `[, imag]` shows that `imag` is an optional argument."
-msg2 = "This statement is false. `imag` is not a required argument."
-msg3 = "Perfect!"
-msg4 = "This is almost true, but not entirely. If you don't specify `image`, it is set to 0."
-test_mc(3, [msg1, msg2, msg3, msg4])
-```
 
 ---
 ## Multiple arguments
@@ -178,7 +115,6 @@ skills: 2
 key: e30486d7c1
 ```
 
-In the previous exercise, the square brackets around `imag` in the documentation showed us that the `imag` argument is optional. But Python also uses a different way to tell users about arguments being optional.
 
 Have a look at the documentation of [`sorted()`](https://docs.python.org/3/library/functions.html#sorted) by typing `help(sorted)` in the IPython Shell.
 
@@ -253,26 +189,6 @@ test_function_v2("sorted", params = ['iterable', 'reverse'])
 test_object("full_sorted", incorrect_msg = "Assign the result of the `sorted()` function to `full_sorted`.")
 success_msg("Cool! Head over to the video on Python methods.")
 ```
-
----
-## Methods
-
-```yaml
-type: VideoExercise
-lang: python
-xp: 50
-skills: 2
-key: e1aaeb300b
-```
-
-`@video_link`
-//player.vimeo.com/video/154563307
-
-`@video_hls`
-//videos.datacamp.com/transcoded/735_intro_to_python/v1/hls-ch3_2.master.m3u8
-
-*** =projector_key
-cf2471efdf2df82d911fb0cfcf0466f6
 
 ---
 ## String Methods
@@ -533,25 +449,6 @@ test_object("areas", incorrect_msg = "The final value of `areas` is not correct 
 success_msg("Great!")
 ```
 
----
-## Packages
-
-```yaml
-type: VideoExercise
-lang: python
-xp: 50
-skills: 2
-key: 2b89c5a9d8
-```
-
-`@video_link`
-//player.vimeo.com/video/146994272
-
-`@video_hls`
-//videos.datacamp.com/transcoded/735_intro_to_python/v1/hls-ch3_3.master.m3u8
-
-*** =projector_key
-c550d2f388d2718361d55e101c6c3887
 
 ---
 ## Import package
