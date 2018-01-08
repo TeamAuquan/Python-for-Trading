@@ -6,25 +6,6 @@ attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/intro_to_python/ch1_slides.pdf
 
 
----
-## Hello Python!
-
-```yaml
-type: VideoExercise
-lang: python
-xp: 50
-skills: 2
-key: d5509896f7
-```
-
-`@video_link`
-//player.vimeo.com/video/146994261
-
-`@video_hls`
-//videos.datacamp.com/transcoded/735_intro_to_python/v2/hls-ch1_1.master.m3u8
-
-*** =projector_key
-5f61a677bf62c17b450465ee849823ee
 
 ---
 
@@ -85,92 +66,7 @@ test_function("print", 2, not_called_msg = msg, incorrect_msg = msg)
 success_msg("Great!")
 ```
 
----
-## When to use Python?
 
-```yaml
-type: MultipleChoiceExercise
-lang: python
-xp: 50
-skills: 2
-key: 9703b117fb
-```
-
-Python is a pretty versatile language. For which applications can you use Python?
-
-`@instructions`
-- You want to do some quick calculations.
-- For your new business, you want to develop a database-driven website.
-- Your boss asks you to clean and analyze the results of the latest satisfaction survey.
-- All of the above.
-
-`@hint`
-Filip mentioned in the video that Python can be used to build practically any piece of software.
-
-`@pre_exercise_code`
-```{python}
-# pec comes here
-```
-
-`@sct`
-```{python}
-msg1 = "Incorrect. Python can do simple and quick calculations, but it is much more than that!"
-msg2 = "Incorrect. There is a very popular framework to build database-driven websites (Django), but Python can do much more."
-msg3 = "Incorrect. Python is a powerful tool to do data analysis, but you can also use it for other ends."
-msg4 = "Correct! Python is an extremely versatile language."
-test_mc(4, [msg1, msg2, msg3, msg4])
-
-```
-
----
-## Any comments?
-
-```yaml
-type: NormalExercise
-lang: python
-xp: 100
-skills: 2
-key: 7c4a738a13
-```
-
-Something that Filip didn't mention in his videos is that you can add **comments** to your Python scripts. Comments are important to make sure that you and others can understand what your code is about.
-
-To add comments to your Python script, you can use the `#` tag. These comments are not run as Python code, so they will not influence your result. As an example, take the comment on the right, `# Just testing division`; it is completely ignored during execution.
-
-`@instructions`
-Above the `print(7 + 10)`, add the comment `# Addition works too`.
-
-`@hint`
-For this exercise you only have to add one line of comments. It won't run as Python code. Add `# Addition works too` right above `print(7 + 10)`.
-
-`@pre_exercise_code`
-```{python}
-# pec comes here
-```
-
-`@sample_code`
-```{python}
-# Just testing division
-print(5 / 8)
-
-
-print(7 + 10)
-```
-
-`@solution`
-```{python}
-# Just testing division
-print(5 / 8)
-
-# Addition works too
-print(7 + 10)
-```
-
-`@sct`
-```{python}
-test_student_typed("#\s*(\w+) works (\w+)[\s.!?]*print\(7", not_typed_msg = "Make sure to add the instructed comment right before `print(7+10)`.")
-success_msg("Great!")
-```
 
 ---
 ## Python as a calculator
@@ -244,165 +140,11 @@ print(100 * 1.1 ** 7)
 `@sct`
 ```{python}
 test_output_contains("194\\.8", no_output_msg = "Have you used the operation `100 * 1.1 ** 7` in a `print()` call?")
-success_msg("Time for another video!")
-```
-
----
-## Variables & Types
-
-```yaml
-type: VideoExercise
-lang: python
-xp: 50
-skills: 2
-key: ef8356fb92
-```
-
-`@video_link`
-//player.vimeo.com/video/154561704
-
-`@video_hls`
-//videos.datacamp.com/transcoded/735_intro_to_python/v1/hls-ch1_2.master.m3u8
-
-*** =projector_key
-7df0925250c5fb2a647cd76fb09d446e
-
----
-
-## Variable Assignment
-
-```yaml
-type: NormalExercise
-lang: python
-xp: 100
-skills: 2
-key: 4bf65ad83e
-```
-
-In Python, a variable allows you to refer to a value with a name. To create a variable use `=`, like this example:
-
-```
-x = 5
-```
-
-You can now use the name of this variable, `x`, instead of the actual value, `5`.
-
-Remember, `=` in Python means _assignment_, it doesn't test equality!
-
-`@instructions`
-- Create a variable `savings` with the value 100.
-- Check out this variable by typing `print(savings)` in the script.
-
-`@hint`
-- Type `savings = 100` to create the variable `savings`.
-- After creating the variable `savings`, you can type `print(savings)`.
-
-`@pre_exercise_code`
-```{python}
-# pec
-```
-
-`@sample_code`
-```{python}
-# Create a variable savings
-
-
-# Print out savings
-
-```
-
-`@solution`
-```{python}
-# Create a variable savings
-savings = 100
-
-# Print out savings
-print(savings)
-```
-
-`@sct`
-```{python}
-test_object("savings", incorrect_msg = "Assign `100` to the variable `savings`.")
-test_function("print", incorrect_msg = "Print out `savings`, the variable you created, using `print(savings)`.")
-success_msg("Great! Let's try to do some calculations with this variable now!")
-```
-
----
-## Calculations with variables
-
-```yaml
-type: NormalExercise
-lang: python
-xp: 100
-skills: 2
-key: ff06cedeb4
-```
-
-Remember how you calculated the money you ended up with after 7 years of investing $100? You did something like this:
-
-```
-100 * 1.10 ** 7
-```
-
-Instead of calculating with the actual values, you can use variables instead. The `savings` variable you've created in the previous exercise represents the $100 you started with. It's up to you to create a new variable to represent `1.10` and then redo the calculations!
-
-`@instructions`
-- Create a variable `factor`, equal to `1.10`.
-- Use `savings` and `factor` to calculate the amount of money you end up with after 7 years. Store the result in a new variable, `result`.
-- Print out the value of `result`.
-
-`@hint`
-- To create the variable `factor`, use `factor = 1.10`.
-- In the example code block of the assignment, replace `100` with `savings` and `1.10` with `factor`: `savings * factor ** 7`.
-- Use the [`print()`](https://docs.python.org/3/library/functions.html#print) function to print the value of a variable.
-
-`@pre_exercise_code`
-```{python}
-# pec
-```
-
-`@sample_code`
-```{python}
-# Create a variable savings
-savings = 100
-
-# Create a variable factor
-
-
-# Calculate result
-
-
-# Print out result
-```
-
-`@solution`
-```{python}
-# Create a variable savings
-savings = 100
-
-# Create a variable factor
-factor = 1.1
-
-# Calculate result
-result = savings * factor ** 7
-
-# Print out result
-print(result)
-```
-
-`@sct`
-```{python}
-test_object("savings", undefined_msg = "The variable `savings` was defined for you, don't remove it!",
-                       incorrect_msg = "The variable `savings` should be `100`, like it was defined for you.")
-test_object("factor", incorrect_msg = "The value of `factor` should be `1.1`.")
-test_object("result", incorrect_msg = "Have you used `*` and `**` to calculate `result`?")
-msg = "Don't forget to print out `result` after assigning it."
-test_print(not_called_msg = msg, incorrect_msg = msg)
 success_msg("Great!")
 ```
 
 ---
-## Other variable types
+## Variable types
 
 ```yaml
 type: NormalExercise
@@ -412,15 +154,15 @@ skills: 2
 key: 006b48561f
 ```
 
-In the previous exercise, you worked with two Python data types:
+Two Numerical Python data types:
 
-- `int`, or integer: a number without a fractional part. `savings`, with the value `100`, is an example of an integer.
-- `float`, or floating point: a number that has both an integer and fractional part, separated by a point. `factor`, with the value `1.10`, is an example of a float.
+- `int`
+- `float`
 
 Next to numerical data types, there are two other very common data types:
 
-- `str`, or string: a type to represent text. You can use single or double quotes to build a string.
-- `bool`, or boolean: a type to represent logical values. Can only be `True` or `False` (the capitalization is important!).
+- `str`
+- `bool`, Can only be `True` or `False` (the capitalization is important!).
 
 `@instructions`
 - Create a new string, `desc`, with the value `"compound interest"`.
@@ -516,7 +258,7 @@ skills: 2
 key: 4d0d83cc02
 ```
 
-Filip mentioned that different types behave differently in Python.
+Different types behave differently in Python.
 
 When you sum two strings, for example, you'll get different behavior than when you sum two integers or two booleans.
 
