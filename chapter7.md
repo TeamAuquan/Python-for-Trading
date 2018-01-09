@@ -100,7 +100,7 @@ print(df)
 df = pd.DataFrame(data=np.array([['500', '+50l'], ['250', '-35s'], ['-400', '-25s']]), index=['S1', 'S2', 'S3'], columns=['pnl','position'])
 
 # Delete unwanted parts from the strings in the `result` column
-df['result'] = df['result'].map(lambda x: x.lstrip('+-').rstrip('ls'))
+df['position'] = df['position'].map(lambda x: x.lstrip('+-').rstrip('ls'))
 
 # Check out the result again
 print(df)
