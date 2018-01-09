@@ -111,6 +111,41 @@ print(df)
 ```{python}
 
 ```
+--- type:NormalExercise lang:python xp:100 skills:2 key:728a29687f
+## Reshape Pandas DataFrame
+Reshaping your DataFrame is basically transforming it so that the resulting structure makes it more suitable for your data analysis.
+In other words, reshaping is not so much concerned with formatting the values that are contained within the DataFrame, but more about transforming the shape of it.
+
+There are three ways of reshaping: pivoting, stacking and unstacking and melting. Let's look at stacking. 
+
+When you stack a DataFrame, you make it taller. You move the innermost column index to become the innermost row index. You return a DataFrame with an index with a new inner-most level of row labels.
+
+The inverse of stacking is called unstacking. Much like `stack()`, you use `unstack()` to move the innermost row index to become the innermost column index.
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{python}
+
+```
+
+*** =sample_code
+```{python}
+
+```
+
+*** =solution
+```{python}
+
+```
+
+*** =sct
+```{python}
+
+```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:a1b169c2d9
 ## Splitting Text in a Column into Multiple Rows in a DataFrame
@@ -197,6 +232,115 @@ df = df.join(pdiffdf)
 
 # Check out the new `df`
 print(df)
+
+```
+
+*** =sct
+```{python}
+
+```
+
+--- type:NormalExercise lang:python xp:100 skills:2 key:be415ef317
+## Initializing an Empty DataFrame
+Pandas `Dataframe()` function requires you to pass the data that you want to put in, the indices and the columns. Remember that the data that is contained within the data frame doesn’t have to be homogenous.
+There are several ways in which you can use this function to make an empty data frame.
+Firstly, you can use `numpy.nan` to initialize your data frame with `NaN`s. Note that `numpy.nan` has type `float`.
+The data type of the data frame is inferred by default: because `numpy.nan` has type float, the data frame will also contain values of type float. You can, however, also force the data frame to be of a certain type by adding the attribute `dtype` and filling in the desired type.
+Note that if you don’t specify the axis labels or index, they will be constructed from the input data based on common sense rules.
+
+*** =instructions
+
+Create an empty dataframe with index=[0,1,2,3], single columns='A' and dtype=`int`
+*** =hint
+
+*** =pre_exercise_code
+```{python}
+import pandas as pd
+import numpy as np
+```
+
+*** =sample_code
+```{python}
+
+df = pd.DataFrame(index=range(0,4),columns=['A'], dtype='float')
+print(df)
+```
+
+*** =solution
+```{python}
+df = pd.DataFrame(index=range(0,4),columns=['A'], dtype='float')
+print(df)
+```
+
+*** =sct
+```{python}
+
+```
+
+--- type:NormalExercise lang:python xp:100 skills:2 key:0d73b6c433
+## Importing Data (especially with dates)
+
+You can use the `.read_csv()` method to read data from a csv files directly into a DataFrame. If your data contains dates (as financial data will), add the argument `parse_dates`. There are, however, always weird date-time formats.
+
+In such cases, you can construct your own parser to deal with this. You could, for example, make a `lambda` function that takes your DateTime and controls it with a format string.
+
+*** =instructions
+'AAPL.csv' file contains dates in the format '%Y-%m-%d'. Write a custom date parser and import the data into a dataframe
+*** =hint
+
+*** =pre_exercise_code
+```{python}
+import pandas as pd
+```
+
+*** =sample_code
+```{python}
+
+```
+
+*** =solution
+```{python}
+dateparser = lambda x: pd.datetime.strptime(x, '%Y-%m-%d')
+
+pd.read_csv('AAPL.csv', parse_dates=True, date_parser=dateparser)
+
+```
+
+*** =sct
+```{python}
+
+```
+
+--- type:NormalExercise lang:python xp:100 skills:2 key:9b04700610
+## Iterate Over a Pandas DataFrame
+
+You can iterate over the rows of your DataFrame with the help of a `for` loop in combination with an `iterrows()` call on your DataFrame. `iterrows()` allows you to efficiently loop over your DataFrame rows as (index, Series) pairs. In other words, it gives you (index, row) tuples as a result.
+
+
+*** =instructions
+Iterate over all rows of the dataframe and print values in column A and column B, one row per line.
+
+*** =hint
+
+*** =pre_exercise_code
+```{python}
+import pandas as pd
+import numpy as np
+```
+
+*** =sample_code
+```{python}
+df = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), columns=['A', 'B', 'C'])
+
+
+```
+
+*** =solution
+```{python}
+df = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), columns=['A', 'B', 'C'])
+
+for index, row in df.iterrows() :
+    print(row['A'], row['B'])
 
 ```
 
