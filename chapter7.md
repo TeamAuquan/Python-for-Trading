@@ -354,7 +354,7 @@ for index, row in df.iterrows() :
 
 *** =sct
 ```{python}
-test_function("print", index=1)
+test_student_typed("df.iterrows()")
 success_msg("Great job!")
 
 ```
