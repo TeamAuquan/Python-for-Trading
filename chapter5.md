@@ -49,6 +49,8 @@ print(a['cake'])
 
 `@sct`
 ```{python}
+test_object("a")
+test_function("print", index=1)
 
 success_msg("Great! Moving on")
 
@@ -71,7 +73,7 @@ Any key can be deleted by the `del ` command
 The whole dictionary can be cleared by the `.clear()` command
 
 `@instructions`
-declare a new dictionary a with 
+declare a new dictionary `a` with 
 keys : one, two, three 
 values: [1], [1,1], 3.0
 
@@ -106,6 +108,8 @@ print(a)
 
 `@sct`
 ```{python}
+test_object("a")
+test_function("print", index=1)
 success_msg("Good Work")
 ```
 ---
@@ -125,7 +129,7 @@ To do this, you need to access the keys and values. Dict keys are accessed as a 
 
 `@instructions`
 Create a python dictionary a = {'one': 1, 'two': 'to', 'three': 3.0, 'four': [4,4.0]}
-Print all keys, all values and all key:value pairs
+Print all keys and all key:value pairs
 
 `@hint`
 
@@ -143,12 +147,15 @@ Print all keys, all values and all key:value pairs
 ```{python}
 a = {'one': 1, 'two': 'to', 'three': 3.0, 'four': [4,4.0]}
 print(a.keys())
-print(a.values())
 print(a.items())
 ```
 
 `@sct`
 ```{python}
+test_object("a")
+test_function("print", index=1)
+test_function("print", index=2)
+success_msg("Good Work")
 
 ```
 
@@ -169,7 +176,7 @@ This is the general template you can follow for dictionary comprehension in Pyth
 Look at a simple comprehension where we create a new dictionary with same keys and doubled values as original
 
 `@instructions`
-Create a new dictionary where the key is a number in the range of 0-10 and it's value is the square of the number. Print the keys
+Create a new dictionary `new_dict` where the key is a number in the range of 0-10 and it's value is the square of the number. Print the keys
 `@hint`
 
 `@pre_exercise_code`
@@ -187,14 +194,16 @@ print(double_dict1)
 
 `@solution`
 ```{python}
-new_dict_comp = {n:n**2 for n in numbers}
+new_dict = {n:n**2 for n in numbers}
 
-print(new_dict_comp)
+print(new_dict)
 ```
 
 `@sct`
 ```{python}
-
+test_object("new_dict")
+test_function("print", index=1)
+success_msg("Good Work")
 ```
 
 ---
@@ -211,7 +220,7 @@ skills: 2
 You often need to add conditions to a solution while tackling problems. Let's explore how you can add conditionals into dictionary comprehension to make it more powerful.
 Let' say you want to create a new dictionary same as previous problem but now the key is a number divisible by 2 in a range of 0-10 and it's value is the square of the number.
 `@instructions`
-Create a new dictionary where key is a number in a range of 0-10 and it's value is the square of the number if number is even else the number itself.
+Create a new dictionary `new_dict` where key is a number in a range of 0-10 and it's value is the square of the number if number is even else the number itself.
 Eg: 2:4 , 3: 3
 `@hint`
 
@@ -237,16 +246,17 @@ print(new_dict_comp)
 
 numbers = range(10)
 # Use dictionary comprehension with conditional
-new_dict_comp = {n:(n**2 if n%2 == 0 else n) for n in numbers }
+new_dict = {n:(n**2 if n%2 == 0 else n) for n in numbers }
 
-print(new_dict_comp)
+print(new_dict)
 
 
 ```
 
 `@sct`
 ```{python}
-
+test_object("new_dict")
+success_msg("Good Work")
 ```
 
 
@@ -267,7 +277,7 @@ Check out an example of a nested dictionary
 
 `@instructions`
 
-Write a nested code to create a new dictionary with same keys as the original dictionary and values of the first key of the correponding nested dictionary
+Write a nested code to create a new dictionary `new_dict` with same keys as the original dictionary. The value for each key should be a dictionary containing all values of the correponding nested dictionary
 
 For example, the first key : value pair should be : 'first':{1}
 `@hint`
@@ -290,11 +300,12 @@ nested_dict = {'first':{'a':1}, 'second':{'b':2}}
 `@solution`
 ```{python}
 nested_dict = {'first':{'a':1}, 'second':{'b':2}}
-float_dict = {outer_k: {inner_v for (inner_k, inner_v) in outer_v.items()} for (outer_k, outer_v) in nested_dict.items()}
-print(float_dict)
+new_dict = {outer_k: {inner_v for (inner_k, inner_v) in outer_v.items()} for (outer_k, outer_v) in nested_dict.items()}
+print(new_dict)
 ```
 
 `@sct`
 ```{python}
-
+test_object("new_dict")
+success_msg("Good Work")
 ```

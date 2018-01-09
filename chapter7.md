@@ -285,7 +285,7 @@ You can use the `.read_csv()` method to read data from a csv files directly into
 In such cases, you can construct your own parser to deal with this. You could, for example, make a `lambda` function that takes your DateTime and controls it with a format string.
 
 *** =instructions
-'AAPL.csv' file contains dates in the format '%Y-%m-%d'. Write a custom date parser and import the data into a dataframe
+'AAPL.csv' file in `/datasets` folder contains dates in the format '%Y-%m-%d'. Write a custom date parser and import the data into a dataframe
 *** =hint
 
 *** =pre_exercise_code
@@ -302,7 +302,7 @@ import pandas as pd
 ```{python}
 dateparser = lambda x: pd.datetime.strptime(x, '%Y-%m-%d')
 
-pd.read_csv('AAPL.csv', parse_dates=True, date_parser=dateparser)
+pd.read_csv('/datasets/AAPL.csv', parse_dates=True, date_parser=dateparser)
 
 ```
 
