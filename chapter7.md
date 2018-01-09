@@ -119,10 +119,12 @@ We run into this situation frequently when dealing with exchange data. Splitting
 
 In our dataframe, some of our data has not split into rows properly (probably because of dividend). Let's see how we can fix this.
 
-- You take the `price diff` column from the DataFrame df and break the string on the space using `.str.split()`. This will make sure that the two differences will end up in two separate rows in the end. 
+- You take the `price diff` column from the DataFrame `df` and break the string on the space using `.str.split()`. This will make sure that the two differences will end up in two separate rows in the end. 
 - This will result in `NaN` values. So you have to convert it to series and stack the Series to make sure you don’t have any NaN values in the resulting Series. Use `.apply()` to convert to series and `.stack()` to stack them.
 - Finally, reindex and drop a level to line up with rest of the DataFrame. Levels are dropped by `.droplevel(-1)`
 - Now you can join it back to your initial DataFrame. However, to avoid having any duplicates in your DataFrame, you can delete the original `price diff` column.
+
+Applying A Function to Your Pandas DataFrame’s Columns or Rows: We can select a row or column of the dataframe using `loc` or `iloc` and use `.apply()` with the function as parameter. If, however, you want to apply it to each element or element-wise, you can make use of the map() function. 
 
 
 *** =instructions
