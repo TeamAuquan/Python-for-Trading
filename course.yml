@@ -1,6 +1,9 @@
-title                : Python for Trading
-description          : This course will guide you through the basics of Python required for working with financial data 
-university           : Auquan
-difficulty_level     : 2
-time_needed          : 5 hour
-programming_language : python
+title: Python for Trading
+description: This course will guide you through the basics of Python required for
+  working with financial data
+university: Auquan
+difficulty_level: 2
+time_needed: 5 hour
+programming_language: python
+datasets:
+  AAPL.csv: Aapl
