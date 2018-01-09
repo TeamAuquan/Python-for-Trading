@@ -36,7 +36,7 @@ This approach to making data frames will be the same for all the structures that
 
 *** =instructions
 
-Create dataframes from different structures provided
+Create and print a dataframe `df` from each of the different structures provided
 
 *** =hint
 
@@ -58,20 +58,24 @@ print(pd.DataFrame(data=data[1:,1:],
                   columns=data[0,1:]))
                   
 
-# Take a 2D array as input to your DataFrame 
-my_2darray = np.array([[1, 2, 3], [4, 5, 6]])
+# Take a 2D array as input to your DataFrame df1
+my_2darray = np.array([[1, 2, 3], [4, 5, 6]]) 
+df1 = None
 print(________________)
 
-# Take a dictionary as input to your DataFrame 
+# Take a dictionary as input to your DataFrame df2
 my_dict = {1: ['1', '3'], 2: ['1', '2'], 3: ['2', '4']}
+df2 = None
 print(________________)
 
-# Take a DataFrame as input to your DataFrame 
+# Take a DataFrame as input to your DataFrame df3
 my_df = pd.DataFrame(data=[4,5,6,7], index=range(0,4), columns=['A'])
+df3 = None
 print(________________)
 
-# Take a Series as input to your DataFrame
+# Take a Series as input to your DataFrame df4
 my_series = pd.Series({"Belgium":"Brussels", "India":"New Delhi", "United Kingdom":"London", "United States":"Washington"})
+df4 = None
 print(________________)
 ```
 
@@ -79,23 +83,31 @@ print(________________)
 ```{python}
 # Take a 2D array as input to your DataFrame 
 my_2darray = np.array([[1, 2, 3], [4, 5, 6]])
-print(pd.DataFrame(my_2darray))
+df1 = pd.DataFrame(my_2darray)
+print(df1)
 
 # Take a dictionary as input to your DataFrame 
 my_dict = {1: ['1', '3'], 2: ['1', '2'], 3: ['2', '4']}
-print(pd.DataFrame(my_dict))
+df2 = pd.DataFrame(my_dict)
+print(df2)
 
 # Take a DataFrame as input to your DataFrame 
 my_df = pd.DataFrame(data=[4,5,6,7], index=range(0,4), columns=['A'])
-print(my_df)
+df3 = my_df
+print(df3)
 
 # Take a Series as input to your DataFrame
 my_series = pd.Series({"Belgium":"Brussels", "India":"New Delhi", "United Kingdom":"London", "United States":"Washington"})
-print(pd.DataFrame(my_series))
+df4 = pd.DataFrame(my_series)
+print(df4)
 ```
 
 *** =sct
 ```{python}
+test_object("df1")
+test_object("df2")
+test_object("df3")
+test_object("df4")
 
 ```
 
@@ -159,6 +171,8 @@ print(len(df.index))
 
 *** =sct
 ```{python}
+test_function("print", index=1)
+test_function("print", index=2)
 success_msg("Great job!")
 ```
 
@@ -233,7 +247,9 @@ print(df.loc[:,'A'])
 
 *** =sct
 ```{python}
-
+test_function("print", index=1)
+test_function("print", index=2)
+success_msg("Great job!")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:33c60edd54
@@ -274,6 +290,10 @@ df.set_index('C')
 
 *** =sct
 ```{python}
+test_function("print", index=1)
+test_student_typed(".set_index()")
+test_object("df")
+success_msg("Great job!")
 
 ```
 
@@ -343,6 +363,7 @@ print(df2)
 
 *** =sct
 ```{python}
+test_object("df2")
 success_msg("Great job!")
 ```
 
@@ -377,7 +398,7 @@ print(df)
 
 S = pd.Series(['5', '6', '7'], index=df.index)
 
-# Append S as a column to `df`
+# Append S as a column to `df`. Name the column 'S'
 
 
 # Print out `df` again to see the changes
@@ -387,16 +408,19 @@ S = pd.Series(['5', '6', '7'], index=df.index)
 *** =solution
 ```{python}
 df = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), columns=['A', 'B', 'C'])
+df['D'] = df.index
 
 S = pd.Series(['5', '6', '7'], index=df.index)
-df.loc[:, 4] = S
+df.loc[:, 'S'] = S
 
 print(df)
 ```
 
 *** =sct
 ```{python}
+test_object("df")
 success_msg("Great job!")
+
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:89cbbc4e51
@@ -438,6 +462,8 @@ df.reset_index(level=0, inplace=True)
 
 *** =sct
 ```{python}
+test_object("df")
+success_msg("Great job!")
 
 ```
 
@@ -530,6 +556,12 @@ print(df)
 
 *** =sct
 ```{python}
+test_student_typed(".reset_index()")
+test_student_typed(".drop_duplicates(")
+test_student_typed(".drop(48")
+test_student_typed(".drop(df.index[1])")
+test_object("df")
+success_msg("Great job!")
 
 ```
 
@@ -590,5 +622,8 @@ print(df)
 
 *** =sct
 ```{python}
+test_student_typed(".rename(index={1: 'a'})")
+test_object("df")
+success_msg("Great job!")
 
 ```
