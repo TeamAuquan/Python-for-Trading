@@ -61,6 +61,8 @@ print(df)
 *** =sct
 ```{python}
 
+test_object("df")
+success_msg("Great job!")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:d23c3ea18c
@@ -109,6 +111,8 @@ print(df)
 
 *** =sct
 ```{python}
+test_object("df")
+success_msg("Great job!")
 
 ```
 --- type:NormalExercise lang:python xp:100 skills:2 key:728a29687f
@@ -237,6 +241,8 @@ print(df)
 
 *** =sct
 ```{python}
+test_object("df")
+success_msg("Great job!")
 
 ```
 
@@ -250,7 +256,7 @@ Note that if you don’t specify the axis labels or index, they will be construc
 
 *** =instructions
 
-Create an empty dataframe with index=[0,1,2,3], single columns='A' and dtype=`int`
+Create an empty dataframe `df` with index=[0,1,2,3], single columns='A' and dtype=`int`
 *** =hint
 
 *** =pre_exercise_code
@@ -262,8 +268,7 @@ import numpy as np
 *** =sample_code
 ```{python}
 
-df = pd.DataFrame(index=range(0,4),columns=['A'], dtype='float')
-print(df)
+
 ```
 
 *** =solution
@@ -274,7 +279,8 @@ print(df)
 
 *** =sct
 ```{python}
-
+test_object("df")
+success_msg("Great job!")
 ```
 
 --- type:NormalExercise lang:python xp:100 skills:2 key:0d73b6c433
@@ -285,7 +291,7 @@ You can use the `.read_csv()` method to read data from a csv files directly into
 In such cases, you can construct your own parser to deal with this. You could, for example, make a `lambda` function that takes your DateTime and controls it with a format string.
 
 *** =instructions
-'AAPL.csv' file in `/datasets` folder contains dates in the format '%Y-%m-%d'. Write a custom date parser and import the data into a dataframe
+'AAPL.csv' file in `/datasets` folder contains dates in the format '%Y-%m-%d'. Write a custom date parser and import the data into a dataframe `df`
 *** =hint
 
 *** =pre_exercise_code
@@ -302,12 +308,14 @@ import pandas as pd
 ```{python}
 dateparser = lambda x: pd.datetime.strptime(x, '%Y-%m-%d')
 
-pd.read_csv('/datasets/AAPL.csv', parse_dates=True, date_parser=dateparser)
+df = pd.read_csv('/datasets/AAPL.csv', parse_dates=True, date_parser=dateparser)
 
 ```
 
 *** =sct
 ```{python}
+test_object("df")
+success_msg("Great job!")
 
 ```
 
@@ -346,5 +354,7 @@ for index, row in df.iterrows() :
 
 *** =sct
 ```{python}
+test_function("print", index=1)
+success_msg("Great job!")
 
 ```
