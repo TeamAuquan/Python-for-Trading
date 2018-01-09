@@ -291,12 +291,15 @@ You can use the `.read_csv()` method to read data from a csv files directly into
 In such cases, you can construct your own parser to deal with this. You could, for example, make a `lambda` function that takes your DateTime and controls it with a format string.
 
 *** =instructions
-'AAPL.csv' file in `/datasets` folder contains dates in the format '%Y-%m-%d'. Write a custom date parser and import the data into a dataframe `df`
+'AAPL.csv' file contains dates in the format '%Y-%m-%d'.
+The filelocation is stored in a variable `fileLocation`
+Write a custom date parser and import the data into a dataframe `df`
 *** =hint
 
 *** =pre_exercise_code
 ```{python}
 import pandas as pd
+fileLocation = 'https://s3.amazonaws.com/assets.datacamp.com/production/course_6523/datasets/AAPL.csv'
 ```
 
 *** =sample_code
@@ -308,7 +311,7 @@ import pandas as pd
 ```{python}
 dateparser = lambda x: pd.datetime.strptime(x, '%Y-%m-%d')
 
-df = pd.read_csv('/datasets/AAPL.csv', parse_dates=True, date_parser=dateparser)
+df = pd.read_csv(fileLocation, parse_dates=True, date_parser=dateparser)
 
 ```
 
