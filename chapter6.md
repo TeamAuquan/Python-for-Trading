@@ -556,7 +556,6 @@ print(df)
 
 *** =sct
 ```{python}
-test_function("df.reset_index", do_eval = False)
 test_function("print")
 test_object("df")
 success_msg("Great job!")
