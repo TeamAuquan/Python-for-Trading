@@ -557,6 +557,8 @@ print(df)
 *** =sct
 ```{python}
 test_function("df.reset_index", do_eval = False)
+test_function("df.drop", index = 1, do_eval = False)
+test_function("df.drop", index = 2, do_eval = True)
 test_function("print")
 test_object("df")
 success_msg("Great job!")
@@ -620,7 +622,8 @@ print(df)
 
 *** =sct
 ```{python}
-test_function("df.rename", do_eval = False)
+test_function("df.rename", index = 1, do_eval = False)
+test_function("df.rename", index = 2, do_eval = True)
 test_object("df")
 success_msg("Great job!")
 
