@@ -556,7 +556,7 @@ print(df)
 
 *** =sct
 ```{python}
-test_student_typed(".reset_index()")
+test_student_typed("\s*\.reset_index()\s*")
 test_function("print")
 test_object("df")
 success_msg("Great job!")
