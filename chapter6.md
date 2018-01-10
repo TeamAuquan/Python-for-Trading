@@ -524,7 +524,7 @@ df = pd.DataFrame(data=np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9], [40, 50, 60], 
 
 
 
-# Drop the column with label 'A' inplace                 
+# Drop the column with label 48 inplace                 
 
 
 # Drop the third row (index at position 1)
@@ -556,7 +556,7 @@ print(df)
 
 *** =sct
 ```{python}
-test_student_typed("\s*\.reset_index()\s*")
+test_function("df.reset_index", do_eval = False)
 test_function("print")
 test_object("df")
 success_msg("Great job!")
