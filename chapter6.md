@@ -557,9 +557,7 @@ print(df)
 *** =sct
 ```{python}
 test_student_typed(".reset_index()")
-test_student_typed(".drop_duplicates(")
-test_student_typed(".drop(48")
-test_student_typed(".drop(df.index[1])")
+test_function("print")
 test_object("df")
 success_msg("Great job!")
 
