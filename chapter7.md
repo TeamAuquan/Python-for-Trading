@@ -273,7 +273,7 @@ import numpy as np
 
 *** =solution
 ```{python}
-df = pd.DataFrame(index=range(0,4),columns=['A'], dtype='float')
+df = pd.DataFrame(index=range(0,4),columns=['A'], dtype='int')
 print(df)
 ```
 
